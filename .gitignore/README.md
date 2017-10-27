@@ -1,2 +1,0 @@
-# LTW
-trabalho de LTW
