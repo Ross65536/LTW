@@ -3,8 +3,17 @@
 <body>
     <header>
         <div id="title">
-            <img src="images/site/logo.svg" alt="Logo image">
             <h1><a href="index.php">TODO Lists</a></h1>
+        </div>
+
+        <div id="signup">
+            <?php  if(! Session\isLoggedIn()) { ?>
+                <a href="register.php">Register</a>
+                <a href="login.php">Login</a>
+            <?php } else { ?>
+                <a href="edit_account.php">Edit Account</a>
+                <a href="action_logout.php">Logout</a>
+            <?php } ?>
         </div>
         
         <menu>
