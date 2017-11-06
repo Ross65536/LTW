@@ -1,7 +1,6 @@
 <?php 
     session_start();
 
-    include_once('database/connection.php');
     include_once('database/UsersFacade.php'); 
     include_once('PHP/Session.php'); 
 
@@ -15,7 +14,7 @@
 
     if($password === $confirmPassword)
     {
-        $usersDB = new UsersFacade($db);
+        $usersDB = new UsersFacade();
         $isSuccessfulyRegistered = $usersDB->addUser($username, $password, $name, $email);
 
         if($isSuccessfulyRegistered)

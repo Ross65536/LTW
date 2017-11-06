@@ -6,10 +6,9 @@
   
   if(Session\isLoggedIn())
   {
-    include_once('database/connection.php');
     include_once('database/UsersFacade.php'); 
     
-    $usersDB = new UsersFacade($db);
+    $usersDB = new UsersFacade();
     $username = Session\getLoginUsername();
     $info = $usersDB->getSecondaryInfo($username);
 

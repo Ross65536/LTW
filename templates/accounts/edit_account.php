@@ -1,6 +1,7 @@
 <section id="edit_account">
     <h1>Edit Account Information</h1>
     <p>User: <?= "$username" ?></p>
+    <p>Edit the fields you want to change, and enter your password for confirmation </p>
     <form action="action_edit_account.php" method="post">
         <label>
             Name <input type="text" name="name" value="<?=$name?>" >
@@ -16,7 +17,7 @@
         </label>
         <label>
             <!-- isto podia ser mais á parte do resto-->
-            Old Password <input type="password" name="old_password" required>
+            Password <input type="password" name="old_password" required>
         </label>
         <input type="submit" value="Update">
     </form>

@@ -1,7 +1,6 @@
 <?php 
     session_start();
 
-    include_once('database/connection.php');
     include_once('database/UsersFacade.php'); 
     include_once('PHP/Session.php'); 
 
@@ -14,7 +13,7 @@
     $name = $_POST['name'];
     $email = $_POST['email'];
 
-    $usersDB = new UsersFacade($db);
+    $usersDB = new UsersFacade();
     if($usersDB->checkValidUserLoginInfo($username, $oldPassword))
     {
         $secInfo = [
