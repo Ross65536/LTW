@@ -13,7 +13,8 @@ class ListsFacade extends ConnectionBase
 
 
     public function retrieveAllUsersOfList($id) {
-      $stmt = $this->$db->prepare('SELECT username FROM list_users WHERE list_id = ?');
+
+      $stmt = $this->db->prepare('SELECT username FROM list_users WHERE list_id = ?');
 
       $stmt->execute(array($id));
       $users = $stmt->fetchAll();
