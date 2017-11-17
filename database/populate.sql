@@ -1,0 +1,11 @@
+INSERT INTO users (username, password, name, email) VALUES ('test', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'John Doe', 'test@example.com');
+INSERT INTO users (username, password, name, email) VALUES ('test2', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'Maria Doe', 'testa@example.com');
+INSERT INTO lists (date_created, name, creator) VALUES (date('now'), 'Lista de Teste', 'test');
+INSERT INTO lists (date_created, name, creator) VALUES (date('now'), 'Lista de Teste 2', 'test');
+INSERT INTO lists (date_created, name, creator) VALUES (date('now'), 'Lista de Teste 3', 'test');
+INSERT INTO lists (date_created, name, creator) VALUES (date('now'), 'Lista de Teste 4', 'test');
+INSERT INTO lists (date_created, name, creator) VALUES (date('now'), 'Lista de Teste 5', 'test');
+INSERT INTO list_users (list_id, username) VALUES (1, 'test2');
+INSERT INTO list_items (list_id, description) VALUES (1, 'primeiro item de lista');
+INSERT INTO list_items (list_id, description) VALUES (1, 'segundo item de lista');
+INSERT INTO list_items (list_id, description) VALUES (1, 'terceiro item de lista');

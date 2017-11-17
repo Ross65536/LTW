@@ -1,0 +1,65 @@
+*:focus {
+    outline: none;
+}
+
+#header {
+  text-align: center;
+    font-family: 'Lato Light', serif;
+    background-color: #007fff;
+    padding: 1.5em 1em;
+    margin: auto auto;
+    border-radius: 10px 10px 0 0;
+    color: white;
+    border-bottom: solid 1px rgba(0, 0, 0, 0.2);
+}
+
+body {
+    width: 65%;
+    margin: 1em auto;
+    box-shadow: 10px 10px 30px 2px #888888;
+    border-radius: 10px;
+}
+
+#body-section {
+  text-align: center;
+  padding: 5em;
+  border: solid 1px rgba(0, 0, 0, 0.2);
+}
+
+.ul-title {
+    font-family: 'Lato Light', serif;
+    font-size: 2em;
+}
+
+ul li {
+    margin: 1em auto;
+    font-family: Ubuntu, sans-serif;
+    list-style: none;
+}
+
+ul li a {
+  color: darkblue;
+  text-decoration: none;
+}
+
+footer {
+  background-color: #007fff;
+  text-align: center;
+  padding: 1em;
+  color: white;
+  font-family: 'Lato Light', serif;
+  border-radius: 0 0 10px 10px;
+}
+
+/************ added by Igor ***********/
+.delete-button {
+  float: right;
+  margin-top: -13px;
+  font-size: 11px;
+  font-family: helvetica;
+  color: tray;
+  display: none;
+}
+li:hover .delete-button {
+    display: block;
+}
