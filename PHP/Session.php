@@ -1,16 +1,20 @@
 <?php
-    
+
     /**
      * ex: Session\isLoggedIn(); to call a function in a namespace
      */
     namespace Session;
-    
+
     /**
-     * @return true if user is logged in 
+     * @return true if user is logged in
      */
     function isLoggedIn()
     {
         return isset($_SESSION['username']);
+    }
+
+    function redirectIndex() {
+      header('Location : index.php');
     }
 
     function redirectBack()
@@ -18,13 +22,13 @@
         header('Location: ' . $_SERVER['HTTP_REFERER']);
     }
 
-    function redirectBackIfLoggedIn() 
+    function redirectBackIfLoggedIn()
     {
         if(isLoggedIn())
             redirectBack();
     }
 
-    function redirectBackIfNotLoggedIn() 
+    function redirectBackIfNotLoggedIn()
     {
         if(! isLoggedIn())
             redirectBack();

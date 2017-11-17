@@ -4,5 +4,5 @@
 
   Session\logOut();
 
-  header('Location : index.php');
+  Session\redirectBack();
 ?>

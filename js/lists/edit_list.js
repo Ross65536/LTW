@@ -9,6 +9,20 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
+  var boxes = document.querySelectorAll('input[type=checkbox]');
+  for (var i = 0; i < boxes.length; i++) {
+    boxes[i].addEventListener('change', function() {
+      if (this.checked) {
+        this.parentElement.style.textDecoration = 'line-through';
+      } else {
+        this.parentElement.style.textDecoration = '';
+      }
+    });
+    if (boxes[i].checked) {
+      boxes[i].parentElement.style.textDecoration = 'line-through';
+    }
+  }
+
   document.querySelector('input[name=name]').addEventListener('input', function(){
     verifyFieldsFull();
   });
@@ -23,7 +37,7 @@ function deleteList() {
 }
 
 function verifyFieldsFull() {
-  if (document.querySelector('input[name=name]').value.length > 5
+  if (document.querySelector('input[name=name]').value.length > 4
   && document.getElementById('items_list').getElementsByTagName('li').length > 0) {
     document.querySelector('input[type=submit]').style.display = 'block';
   } else {
@@ -40,6 +54,9 @@ function addUser() {
 
 function addItem() {
   let item = document.querySelector("#item").value;
+  let name = item.split(' ').join('_');
+  console.log('item ' + item);
+  console.log('name ' + name);
   if (item.length < 1) {
     alert('[ERROR] Cannot add empty item to list.');
   } else {
@@ -47,7 +64,7 @@ function addItem() {
     var li = document.createElement("li");
     var input = document.createElement("input");
     input.type = 'hidden';
-    input.value = item;
+    input.value = name;
     input.setAttribute('name', 'items[]');
     var check = document.createElement("input");
     check.type = 'checkbox';

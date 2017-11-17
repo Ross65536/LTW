@@ -10,8 +10,6 @@
 
   Session\redirectBackIfNotLoggedIn();
 
-  echo '<script src="js/lists/list_item.js"></script>';
-
   $main_info = $listsDB->getListMainInfo($_GET['id']);
   $creator = $listsDB->displayCreator($_GET['id']);
   $listItems = $listsDB->getListItems($_GET['id']);

@@ -1,3 +1,4 @@
+    </div>
     <footer>
       2017 LTW Project
     </footer>

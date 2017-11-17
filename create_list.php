@@ -14,4 +14,5 @@
     include_once('templates/lists/create_list.php');
   }
 
+  include_once('templates/common/footer.php');
 ?>

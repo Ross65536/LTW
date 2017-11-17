@@ -1,11 +1,11 @@
-<?php 
+<?php
     session_start();
 
-    include_once('database/UsersFacade.php'); 
-    include_once('PHP/Session.php'); 
+    include_once('database/UsersFacade.php');
+    include_once('PHP/Session.php');
 
     Session\redirectBackIfLoggedIn();
-    
+
     $username = $_POST['username'];
     $password = $_POST['password'];
     $confirmPassword = $_POST['confirm_password'];
@@ -20,6 +20,6 @@
         if($isSuccessfulyRegistered)
             Session\logIn($username);
     }
-    
+
     Session\redirectBack();
 ?>

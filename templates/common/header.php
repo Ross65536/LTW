@@ -1,7 +1,7 @@
 
 
 <body>
-    <header>
+    <header id="header">
         <div id="title">
             <h1><a href="index.php">TODO Lists</a></h1>
         </div>
@@ -15,12 +15,11 @@
                 <a href="action_logout.php">Logout</a>
             <?php } ?>
         </div>
-        
+
         <menu>
             <ul>
                 <li><a href="index.php">??</a></li>
             </ul>
         </menu>
     </header>
-
-    
+    <div id="body-section">

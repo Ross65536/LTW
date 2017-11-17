@@ -2,7 +2,7 @@
 include_once('database/ListsFacade.php');
 $listDB = new ListsFacade();
 
-$creator = $_POST['creator'];
+$id = $_POST['id'];
 $name = $_POST['name'];
 $items = $_POST['items'];
 $checkboxes;
@@ -22,9 +22,10 @@ if (!empty($items)) {
     array_push($final_items, $item);
   }
 }
+print_r($final_items);
 
 try {
-  $id = $listDB->addList($name, $creator, $final_items, $users);
+  $listDB->updateList($id, $name, $final_items, $users);
   header("Location: single_list.php?id=$id");
 } catch (PDOException $e) {
   die($e->getMessage());

@@ -8,17 +8,17 @@
 
   $listDB = new ListsFacade();
 
-  $title = $listDB->getListName($_GET['id']);
-  $creator = $listDB->getListCreator($_GET['id']);
-  $listItems = $listDB->getListItems($_GET['id']);
-  $listUsers = $listDB->getListUsers($_GET['id']);
-
   if(! Session\isLoggedIn()) {
     include_once('templates/accounts/login.php');
     $_SESSION['error'] = 'not_logged_in';
   }
   else {
     echo '<script src="js/lists/edit_list.js"></script>';
+
+    $title = $listDB->getListName($_GET['id']);
+    $creator = $listDB->displayCreator($_GET['id']);
+    $listItems = $listDB->getListItems($_GET['id']);
+    $listUsers = $listDB->getListUsers($_GET['id']);
     include_once('templates/lists/edit_list.php');
   }
 

@@ -33,11 +33,12 @@ class ListsFacade extends ConnectionBase
     }
 
     public function retrieveAllListsOfUser($username) {
-      $stmt = $this->db->prepare('SELECT lists.id, lists.date_created, lists.name, lists.creator
-      FROM lists JOIN list_users WHERE lists.creator = ?
-       OR list_users.username = ? GROUP BY lists.id');
+      $stmt = $this->db->prepare('SELECT lists.id, lists.name, lists.date_created, lists.creator
+        FROM lists,list_users
+         WHERE lists.creator = ? OR list_users.username = ? AND lists.id = list_users.list_id
+         GROUP BY lists.id');
 
-      $stmt->execute(array($username));
+      $stmt->execute(array($username, $username));
       return $stmt->fetchAll();
     }
 
@@ -100,9 +101,45 @@ class ListsFacade extends ConnectionBase
       foreach ($users as $user) {
         $stmt->execute(array($id, $user));
       }
+
       return $id;
     }
 
+    public function updateList($id, $name, $items, $users) {
+      $stmt = $this->db->prepare('UPDATE lists SET name = ? WHERE id = ?');
+      $stmt->execute(array($name, $id));
+
+      $stmt = $this->db->prepare('DELETE FROM list_items WHERE list_id = ?');
+      $stmt->execute(array($id));
+
+      $stmt = $this->db->prepare('INSERT INTO list_items (list_id, description, done)
+      VALUES (?, ?, ?)');
+
+      foreach ($items as $item) {
+        $stmt->execute(array($id, $item['description'], $item['done']));
+      }
+
+      $stmt = $this->db->prepare('DELETE FROM list_users WHERE list_id = ?');
+      $stmt->execute(array($id));
+
+      $stmt = $this->db->prepare('INSERT INTO list_users (list_id, username)
+      VALUES (?, ?)');
+
+      foreach ($users as $user) {
+        $stmt->execute(array($id, $user));
+      }
+    }
+
+    public function deleteList($id) {
+      $stmt = $this->db->prepare('DELETE FROM list_items WHERE list_id = ?');
+      $stmt->execute(array($id));
+
+      $stmt = $this->db->prepare('DELETE FROM list_users WHERE list_id = ?');
+      $stmt->execute(array($id));
+
+      $stmt = $this->db->prepare('DELETE FROM lists WHERE id = ?');
+      $stmt->execute(array($id));
+    }
 
 }
 ?>

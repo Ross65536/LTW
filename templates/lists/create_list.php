@@ -11,10 +11,10 @@
     <button type="button" onclick="addItem()">Add</button>
   </label>
   <ul id="users_list">
-    <h3>Users Added</h3>
+    <h3>Users</h3>
   </ul>
   <label>
-    Username: <input type="text" id="user"/>
+    New user: <input type="text" id="user"/>
     <button type="button" onclick="addUser()">Add</button>
   </label>
   <input style="display: none" type="submit" value="Save"/>

@@ -8,8 +8,10 @@
     </li>
   <?} else
   foreach ($listItems as $item) {?>
-    <li>
-      <input type="checkbox" <?= ($item['done'] == 1 ? 'checked' : '');?>>
+    <li <?if ($item['done'] == 1) {
+      echo 'style="text-decoration: line-through"';
+    }?>>
+      <input type="checkbox" <?= ($item['done'] == 1 ? 'checked' : '');?> disabled>
       <?=$item['description']?>
       <input type="hidden" value="<?=$item['description']?>" name="items[]"/>
     </li>
@@ -22,7 +24,7 @@
   </label>
 </div>
 <ul id="users_list">
-  <h3>Users Added</h3>
+  <h3>Users</h3>
   <?if (empty($listUsers)) {?>
     <li>
       No users were added here yet.
@@ -34,12 +36,7 @@
     </li>
   <?}?>
 </ul>
-<?if ($creator === "you"){ ?>
-        <form action='edit_list.php' method="get">
-          <input type="hidden" name="id" value="<?=$_GET['id']?>"/>
-          <button>Edit</button>
-        </form>
-<? } else {?>
-  <button onclick="edit_list()">Edit</button>
-  <button id="save_button" style="display: none" onclick="action_save_list.php">Save</button>
-<?} ?>
+<form action='edit_list.php' method="get">
+  <input type="hidden" name="id" value="<?=$_GET['id']?>"/>
+  <button>Edit</button>
+</form>
