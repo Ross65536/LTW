@@ -10,6 +10,6 @@
 
 - [x] List all list by a given username
 - [x] Create new List
-- [ ] Add Item to a list
-- [ ] Mark an item as completed
-- [ ] Delete list
+- [x] Add Item to a list
+- [x] Mark an item as completed
+- [x] Delete list
