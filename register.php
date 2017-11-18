@@ -1,7 +1,8 @@
 <?php
-  session_start();
-  include_once('PHP/Session.php'); 
-  include_once('templates/heads/default_head.php');
+  include_once('PHP/CommonInit.php');
+  
+  $BrowserTabTitle = "Register";
+  include_once('templates/accounts/account_head.php');
   include_once('templates/common/header.php');
   
   if(! Session\isLoggedIn())

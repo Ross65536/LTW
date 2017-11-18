@@ -1,4 +1,5 @@
 <?php
+
   class ConnectionBase 
   {
     public function __construct() {

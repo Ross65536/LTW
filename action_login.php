@@ -1,8 +1,7 @@
 <?php
-    session_start();
+    include_once('PHP/CommonInit.php');
 
     include_once('database/UsersFacade.php');
-    include_once('PHP/Session.php');
 
     Session\redirectBackIfLoggedIn();
 
@@ -14,5 +13,5 @@
     if($userExists)
         Session\logIn($username);
 
-    Session\redirectBack();
+    Session\redirectIndex();
 ?>

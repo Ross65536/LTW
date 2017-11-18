@@ -1,0 +1,65 @@
+
+
+.account 
+{
+    width: 15rem;
+    margin: auto auto;
+    padding: 2rem 3rem;
+}
+
+
+
+.account , .account > form, .account > form label
+{
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 1rem;
+}
+
+.account > form label input, .account input[type="submit"]
+{
+    margin-top: 1rem;
+}
+
+.account form 
+{
+    padding-bottom: 0;
+}
+
+.account input[type="submit"]
+{
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.account form input 
+{
+    height: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+/**********************************/
+/*********   Id'd stuff   *********/
+/**********************************/
+
+#login 
+{
+    padding-bottom: 3rem;
+}
+
+#register, #edit_account
+{
+    padding-bottom: 3rem;
+}
+
+#edit_account 
+{
+    width: 20rem;
+}
+
+#edit_account input[type="submit"] 
+{
+
+}

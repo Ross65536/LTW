@@ -1,0 +1,34 @@
+#header {
+    text-align: center;
+    padding: 1.5em 1em;
+    margin: auto auto;
+}
+
+body {
+    width: 80%;
+    margin: 1em auto;
+}
+
+#body-section {
+    padding: 5em;
+}
+
+ul li {
+    margin: 1em auto;
+}
+
+footer {
+    padding: 1em;
+}
+
+/************ added by Igor ***********/
+.delete-button {
+    float: right;
+    margin-top: -13px;
+    font-size: 11px;
+    display: none;
+}
+
+li:hover .delete-button {
+    display: block;
+}

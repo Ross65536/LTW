@@ -14,7 +14,7 @@
     }
 
     function redirectIndex() {
-      header('Location : index.php');
+      header('Location: index.php');
     }
 
     function redirectBack()

@@ -1,8 +1,7 @@
-<?php
-  session_start();
-  include_once('PHP/Session.php');
+<?php 
+  include_once('PHP/CommonInit.php');
 
   Session\logOut();
 
-  Session\redirectBack();
+  Session\redirectIndex();
 ?>

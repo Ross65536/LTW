@@ -1,6 +1,6 @@
 <?php
 
-include_once('database/ConnectionBase.php');
+include_once(__DIR__ . '/ConnectionBase.php');
 
 /**
  * Receives the database object (usualy the global $db) and provides a 'wrapper' class for manipulating the users table

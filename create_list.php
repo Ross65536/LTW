@@ -1,8 +1,9 @@
 <?php
 
-  session_start();
-  include_once('PHP/Session.php');
-  include_once('templates/heads/default_head.php');
+  include_once('PHP/CommonInit.php');
+
+  $BrowserTabTitle = "Create List";
+  include_once('templates/lists/list_head.php');
   include_once('templates/common/header.php');
 
   if(! Session\isLoggedIn()) {
