@@ -13,5 +13,5 @@
     if($userExists)
         Session\logIn($username);
 
-    Session\redirectIndex();
+    Session\redirectBack();
 ?>

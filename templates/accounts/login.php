@@ -1,7 +1,7 @@
 <section id="login" class="account">
   <?if (isset($_SESSION['error'])) {
     if ($_SESSION['error'] == 'not_logged_in') {
-      ?> <p>You need to be logged in to access lists </p> <?
+      ?> <h3 class="error_message">You need to be logged in to access lists </h3> <?
       unset($_SESSION['error']);
     }
   }?>

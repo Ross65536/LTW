@@ -7,8 +7,8 @@
   include_once('database/ListsFacade.php');
 
   if(! Session\isLoggedIn()) {
-    include_once('templates/accounts/login.php');
     $_SESSION['error'] = 'not_logged_in';
+    include_once('templates/accounts/login.php');
   }
   else {
     $listsDB = new ListsFacade();
