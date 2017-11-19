@@ -1,9 +1,8 @@
 <?php
-    include_once('PHP/CommonInit.php');
-
-    include_once('database/UsersFacade.php');
-
+    include_once(__DIR__ . '/../../CommonInit.php');
     Session\redirectBackIfLoggedIn();
+    include_once(__DIR__ . '/../../../database/UsersFacade.php');
+
 
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -20,5 +19,6 @@
             Session\logIn($username);
     }
 
-    Session\redirectIndex();
+    $php_index_path = '../../../index.php';
+    Session\redirectTo($php_index_path);
 ?>

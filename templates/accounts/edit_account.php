@@ -2,7 +2,7 @@
     <p id="user_p"> User: <?= "$username" ?></p>
     <h1>Edit Account Information:</h1>
     <p>Edit the fields you want to change and enter your password for confirmation. </p>
-    <form action="action_edit_account.php" method="post">
+    <form action="PHP/actions/accounts/action_edit_account.php" method="post">
         <label>
             <span> Name: </span>
             <input type="text" name="name" value="<?=$name?>" >

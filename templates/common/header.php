@@ -19,7 +19,7 @@
             <?php } else { ?>
                 <li><a href="my_lists.php">My Lists</a></li>
                 <li><a href="edit_account.php">Edit Account</a></li>
-                <li><a href="action_logout.php">Logout</a></li>
+                <li><a href="PHP/actions/accounts/action_logout.php">Logout</a></li>
             <?php } ?>
         </ul>
 

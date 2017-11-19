@@ -13,8 +13,18 @@
         return isset($_SESSION['username']);
     }
 
-    function redirectIndex() {
-      header('Location: index.php');
+    
+    function redirectIndex() 
+    {
+        header('Location: index.php');
+    }
+
+    function redirectTo($file) 
+    {
+        if($file == null)
+            throw "Invalid File";
+            
+        header('Location: ' . $file);
     }
 
     function redirectBack()

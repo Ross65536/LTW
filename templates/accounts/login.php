@@ -6,7 +6,7 @@
     }
   }?>
     <h1>Login</h1>
-    <form action="action_login.php" method="post">
+    <form action="PHP/actions/accounts/action_login.php" method="post">
         <label>
             <span> Username: </span> 
             <input type="text" name="username" required>

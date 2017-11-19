@@ -1,9 +1,7 @@
 <?php 
-    include_once('PHP/CommonInit.php');
-    include_once('database/UsersFacade.php'); 
-    
-
+    include_once(__DIR__ . '/../../CommonInit.php');
     Session\redirectBackIfNotLoggedIn();
+    include_once(__DIR__ . '/../../../database/UsersFacade.php');
     
     $username = Session\getLoginUsername();
     $oldPassword = $_POST['old_password'];

@@ -1,6 +1,6 @@
 <section id="register" class="account">
     <h1>Register</h1>
-    <form action="action_register.php" method="post">
+    <form action="PHP/actions/accounts/action_register.php" method="post">
         <label>
             <span> Username: </span> 
             <input type="text" name="username" required>
