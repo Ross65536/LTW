@@ -2,13 +2,14 @@
 
 <body>
     <header id="header">
-        <div id="title">
-            <img id="logo_image" src="images/todo_image.png" alt="logo">
-            <h1><a href="index.php">TODO Lists</a></h1>
-        </div>
+        <a href="index.php" id="title">
+            <img id="logo_image" src="images/todo_image.png" alt="logo">  
+            <h1> TODO Lists</h1>
+        </a>
+        
 
         <?php if(Session\isLoggedIn()) { ?>
-            <p id="display_username" >Hello: <?=Session\getLoginUsername()?></p>
+            <p id="display_username" >Hello <?=Session\getLoginUsername()?></p>
         <? } ?>
 
         <ul id="accounts_bar">
