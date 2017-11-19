@@ -1,0 +1,16 @@
+.delete-button {
+    float: right;
+    margin-top: -13px;
+    font-size: 11px;
+    display: none;
+}
+
+
+/* devia tar associado a id ou classe **/
+li:hover .delete-button {
+    display: block;
+}
+
+.items_list ul li {
+    margin: 1em auto;
+}

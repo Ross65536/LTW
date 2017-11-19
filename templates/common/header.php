@@ -3,23 +3,29 @@
 <body>
     <header id="header">
         <div id="title">
+            <img id="logo_image" src="images/todo_image.png" alt="logo">
             <h1><a href="index.php">TODO Lists</a></h1>
         </div>
 
-        <div id="signup">
-            <?php  if(! Session\isLoggedIn()) { ?>
-                <a href="register.php">Register</a>
-                <a href="login.php">Login</a>
-            <?php } else { ?>
-                <a href="edit_account.php">Edit Account</a>
-                <a href="action_logout.php">Logout</a>
-            <?php } ?>
-        </div>
+        <?php if(Session\isLoggedIn()) { ?>
+            <p id="display_username" >Hello: <?=Session\getLoginUsername()?></p>
+        <? } ?>
 
-        <menu>
+        <ul id="accounts_bar">
+            <?php  if(! Session\isLoggedIn()) { ?>
+                <li><a href="register.php">Register</a></li>
+                <li><a href="login.php">Login</a></li>
+            <?php } else { ?>
+                <li><a href="my_lists.php">My Lists</a></li>
+                <li><a href="edit_account.php">Edit Account</a></li>
+                <li><a href="action_logout.php">Logout</a></li>
+            <?php } ?>
+        </ul>
+
+        <!-- <menu> 
             <ul>
                 <li><a href="index.php">??</a></li>
             </ul>
-        </menu>
+        </menu> -->
     </header>
     <div id="body-section">

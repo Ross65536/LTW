@@ -1,13 +1,9 @@
 
-
 .account 
 {
-    width: 15rem;
     margin: auto auto;
     padding: 2rem 3rem;
 }
-
-
 
 .account , .account > form, .account > form label
 {
@@ -31,6 +27,7 @@
     width: 60%;
     margin-left: auto;
     margin-right: auto;
+    height: 3rem;
 }
 
 .account form input 
@@ -54,12 +51,12 @@
     padding-bottom: 3rem;
 }
 
-#edit_account 
+#edit_account, #register
 {
     width: 20rem;
 }
 
-#edit_account input[type="submit"] 
+#login 
 {
-
+    width: 15rem;
 }

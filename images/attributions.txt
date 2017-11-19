@@ -1,0 +1,6 @@
+Colocar na pagina About os attributions.
+
+/////// Com Atribuicoes
+
+/////// Sem atribuicoes (CC0, etc)
+favicon* , todo_image.png  ==  https://pixabay.com/en/todo-list-terminal-board-check-off-2103511/
