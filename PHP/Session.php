@@ -17,6 +17,7 @@
     function redirectIndex() 
     {
         header('Location: index.php');
+        exit(0);
     }
 
     function redirectTo($file) 
@@ -25,11 +26,13 @@
             throw "Invalid File";
             
         header('Location: ' . $file);
+        exit(0);
     }
 
     function redirectBack()
     {
         header('Location: ' . $_SERVER['HTTP_REFERER']);
+        exit(0);        
     }
 
     function redirectBackIfLoggedIn()
