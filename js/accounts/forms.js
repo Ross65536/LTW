@@ -1,34 +1,28 @@
 'use strict';
 
-
-let form = getAccountsForm();
-form.addEventListener('submit', sendLoginFormJSON);
-
-function getAccountsForm()
+let loginErrorMap = 
 {
-    return document.querySelector('.account');
+    "login_error" : AjaxLib.displayErrorAlert.bind(null, "Username or login error")
+};
+
+
+function attachFormSubmitHandler(form)
+{
+    let ajaxActionPath, errorHandlerMap;
+
+    switch(form.id)
+    {
+        case "login":
+            ajaxActionPath = "PHP/actions/accounts/ajax_login.php";
+            errorHandlerMap = loginErrorMap;
+            break;
+        default:
+            return;
+    }
+
+    let ajaxAdapter = new AjaxFormSubmitAdapter(ajaxActionPath, errorHandlerMap);
+    ajaxAdapter.registerSubmitHandler(form);
 }
 
-function sendLoginFormJSON(event)
-{
-    const ajaxLoginPHPPath = "PHP/actions/accounts/ajax_login.php";
-
-    event.preventDefault();
-
-    let inputsMap = AjaxLib.getFormInputMap(this);
-    const ajaxLoginURI = AjaxLib.joinPathToFormURI(ajaxLoginPHPPath, inputsMap);
-    
-    let request = new XMLHttpRequest();
-    request.addEventListener('load', loginOnLoad);
-    request.open("get", ajaxLoginURI, true);
-    request.send();
-}
-
-function loginOnLoad()
-{
-    let error = JSON.parse(this.responseText);
-    if(error == 0)
-        AjaxLib.goBack();
-    else
-        alert("error " + error);
-}
+let form = document.querySelector('.account');
+attachFormSubmitHandler(form);

@@ -1,6 +1,7 @@
 <?php
     include_once(__DIR__ . '/../../CommonInit.php');
     Session\redirectBackIfLoggedIn();
+    include_once(__DIR__ . '/../AjaxReply.php');
     include_once(__DIR__ . '/../../../database/UsersFacade.php');
 
 
@@ -9,14 +10,14 @@
 
     $usersDB = new UsersFacade();
     $userExists = $usersDB->checkValidUserLoginInfo($username, $password);
+
     if($userExists)
     {
         Session\logIn($username);
-        echo json_encode(0);
+        AjaxReply\returnNoErrors();
     }
     else 
-    {
-        echo json_encode(1);
-    }
+        AjaxReply\returnErrors(["login_error"]);
+    
 
 ?>
