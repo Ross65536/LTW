@@ -53,13 +53,25 @@ function addUser() {
 }
 
 function addItem() {
+
   let item = document.querySelector("#item").value;
-  let name = item.split(' ').join('_');
-  console.log('item ' + item);
-  console.log('name ' + name);
+
   if (item.length < 1) {
-    alert('[ERROR] Cannot add empty item to list.');
+    alert('[ERROR] Cannot add empty item to list.'); return;
+  }
+
+  var itemsOnList = document.getElementById('items_list').getElementsByTagName('li');
+  let items = [];
+  var spans = document.querySelectorAll('.item');
+
+  for (var i = 0; i < spans.length; i++) {
+    items.push(spans[i].innerHTML);
+  }
+console.log(items);
+  if (items.indexOf(item) != -1) {
+    alert('[ERROR] That item is already on this list.');
   } else {
+    let name = item.split(' ').join('_');
     var ul = document.getElementById("items_list");
     var li = document.createElement("li");
     var input = document.createElement("input");
@@ -71,7 +83,7 @@ function addItem() {
     check.setAttribute('name', item);
     let deleteButton = createDeleteButton();
     li.appendChild(check);
-    li.appendChild(document.createTextNode(' ' + item));
+    li.appendChild(document.createTextNode(item));
     li.appendChild(input);
     li.appendChild(deleteButton);
     ul.appendChild(li);
@@ -84,24 +96,41 @@ function addItem() {
 * If the username exists and is not the creator it is added
 */
 function validUser() {
-  if (this.responseText == 0) {
-    let user = document.querySelector("#user").value;
-    var ul = document.getElementById("users_list");
-    var li = document.createElement("li");
-    var input = document.createElement("input");
-    input.type = 'hidden';
-    input.value = user;
-    input.setAttribute('name', 'users[]');
-    let deleteButton = createDeleteButton();
-    li.appendChild(document.createTextNode(user));
-    li.appendChild(input);
-    li.appendChild(deleteButton);
-    ul.appendChild(li);
-    document.querySelector("#user").value = "";
-  } else if (this.responseText == -1) {
-    alert('[ERROR] You cannot add yourself.');
-  } else if (this.responseText == -2){
-    alert('[ERROR] That username does not exist.');
+
+  let user = document.querySelector("#user").value;
+
+  var usersOnList = document.getElementById('users_list').getElementsByTagName('li');
+  let names = [];
+  var spans = document.querySelectorAll('.username');
+
+  for (var i = 0; i < spans.length; i++) {
+    names.push(spans[i].innerHTML);
+  }
+
+  if (names.indexOf(user) != -1) {
+    alert("[ERROR] That user is already on that list.");
+  } else {
+    if (this.responseText == 0) {
+      var ul = document.getElementById("users_list");
+      var li = document.createElement("li");
+      var input = document.createElement("input");
+      input.type = 'hidden';
+      input.value = user;
+      var span = document.createElement('span');
+      span.className = "username";
+      input.setAttribute('name', 'users[]');
+      let deleteButton = createDeleteButton();
+      li.appendChild(span);
+      span.appendChild(document.createTextNode(user));
+      li.appendChild(input);
+      li.appendChild(deleteButton);
+      ul.appendChild(li);
+      document.querySelector("#user").value = "";
+    } else if (this.responseText == -1) {
+      alert('[ERROR] You cannot add yourself.');
+    } else if (this.responseText == -2){
+      alert('[ERROR] That username does not exist.');
+    }
   }
 };
 

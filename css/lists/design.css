@@ -4,3 +4,65 @@ ul li a {
     color: darkblue;
     text-decoration: none;
 }
+
+form.edit-form h3 {
+  font-size: 2rem;
+  color: white;
+  font-weight: 900;
+}
+
+form.edit-form {
+  background-color: #bfbfbf;
+  border-radius: 10px;
+  font-family: sans-serif;
+}
+
+form.edit-form input
+{
+    border: 0px;
+    background-color: white;
+    border-radius: 3px;
+}
+
+form.edit-form span
+{
+    color: white;
+}
+
+form.edit-form input[type="submit"],
+form.edit-form button.add-btn,
+form.edit-form span
+{
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+form.edit-form input[type="submit"],
+form.edit-form button.add-btn
+{
+    transition: background-color 0.3s;
+}
+
+form.edit-form input[type="submit"]:hover
+{
+    background-color: #DDD;
+}
+
+form.edit-form button.add-btn {
+  background-color: #27a8f7;
+}
+
+form.edit-form input[type="submit"]:active
+{
+    background-color: #AAA;
+    box-shadow: 0 0 0.5rem #444;
+}
+
+.error_message
+{
+    padding: 1rem 0.5rem ;
+    color: rgb(255, 0, 0);
+    background-color: rgb(250, 195, 195);
+    border-radius: 5px;
+    font-weight: bold;
+}
