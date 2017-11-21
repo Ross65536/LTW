@@ -33,14 +33,6 @@
     font-size: 1.2rem;
 }
 
-.account p
-{
-    text-align: justify;
-    color: white;
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-}
-
 .account input[type="submit"]
 {
     transition: background-color 0.3s;
@@ -55,6 +47,15 @@
 {
     background-color: #AAA;
     box-shadow: 0 0 0.5rem #444;
+}
+
+.error_message 
+{
+    padding: 1rem 0.5rem ;
+    color: rgb(255, 0, 0);
+    background-color: rgb(250, 195, 195);
+    border-radius: 5px;
+    font-weight: bold;
 }
 
 /**********************************/

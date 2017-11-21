@@ -25,3 +25,9 @@ DOMLib.getFormInputMap = function (formElem)
     return inputMap;
 }
 
+DOMLib.changeClass = function (elem, oldClass, newClass)
+{
+    elem.classList.remove(oldClass);
+    elem.classList.add(newClass);
+}
+

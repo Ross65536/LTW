@@ -1,9 +1,14 @@
 'use strict';
 
+let form = document.querySelector('.account');
+
+let error = form.querySelector('.error_message_invisible');
+
 let loginErrorMap = 
 {
-    "login_error" : AjaxLib.displayErrorAlert.bind(null, "Username or login error")
+    "login_error" : DOMLib.changeClass.bind(DOMLib, error, "error_message_invisible", "error_message")
 };
+
 
 
 function attachFormSubmitHandler(form)
@@ -24,5 +29,4 @@ function attachFormSubmitHandler(form)
     ajaxAdapter.registerSubmitHandler(form);
 }
 
-let form = document.querySelector('.account');
 attachFormSubmitHandler(form);
