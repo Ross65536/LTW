@@ -21,7 +21,7 @@ class AjaxRequestAdapterAbstract
 
     handleJSONResponseTemplate(JSONResponse)
     {
-        throw new Exception("calling abstract method");
+        throw new Error("calling abstract method");
     }
 
     /************************************************************************/

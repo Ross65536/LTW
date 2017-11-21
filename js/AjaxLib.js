@@ -24,3 +24,5 @@ AjaxLib.displayErrorAlert = function(msg)
 }
 
 AjaxLib.redirectBack = () => history.back();
+
+AjaxLib.redirectTo = (URLPath) => window.location.replace(URLPath);

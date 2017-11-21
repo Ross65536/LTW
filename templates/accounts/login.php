@@ -15,7 +15,7 @@
             <span> Password: </span>
             <input type="password" name="password" required>
         </label>
-        <p class="error_message_invisible"> Username or Password Invalid </p> 
+        <p id="login_error" class="error_message_invisible"> Username or Password Invalid </p> 
         <input type="submit" value="Login">
     </form>
 </section>

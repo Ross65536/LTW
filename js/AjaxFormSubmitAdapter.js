@@ -7,10 +7,16 @@ class AjaxFormSubmitAdapter extends AjaxRequestAdapterAbstract
      * 
      * @param {*} actionPath path to php action
      * @param {*} eventHandlerMap a map that maps an eror string returned from php to a function(void)
+     * @param {*} noErrorsHandler function called when no errors are received
      */
-    constructor(actionPath, eventHandlerMap)
+    constructor(actionPath, eventHandlerMap, noErrorsHandler = AjaxLib.redirectBack)
     {
         super();
+
+        if(actionPath == null)
+            throw Error("Invalid action filepath");
+
+        this.noErrorsHandler = noErrorsHandler;
         this.eventHandlerMap = eventHandlerMap;
         this.actionPath = actionPath;        
     }
@@ -29,7 +35,7 @@ class AjaxFormSubmitAdapter extends AjaxRequestAdapterAbstract
     handleJSONResponseTemplate(responseErrorList)
     {
         if(responseErrorList.length === 0)
-            AjaxLib.redirectBack();
+            this.noErrorsHandler();
         else
         {
             for(let i=0; i < responseErrorList.length; i++)
