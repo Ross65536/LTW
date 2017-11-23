@@ -27,7 +27,11 @@ DOMLib.getFormInputMap = function (formElem)
 
 DOMLib.changeClass = function (elem, oldClass, newClass)
 {
-    elem.classList.remove(oldClass);
-    elem.classList.add(newClass);
+    if(elem.classList.contains(oldClass))
+        elem.classList.replace(oldClass, newClass);
+    
 }
 
+DOMLib.getBindShowError = (elem) => DOMLib.changeClass.bind(DOMLib, elem, "error_message_invisible", "error_message");
+
+DOMLib.getBindHideError = (elem) => DOMLib.changeClass.bind(DOMLib, elem, "error_message", "error_message_invisible");

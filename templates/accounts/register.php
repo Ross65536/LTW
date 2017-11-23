@@ -1,6 +1,7 @@
 <section id="register" class="account">
     <h1>Register</h1>
-    <form action="PHP/actions/accounts/action_register.php" method="post">
+    <form action="#">
+        <p id="username_already_exists_error" class="error_message_invisible"> Username already exists </p>
         <label>
             <span> Username: </span> 
             <input type="text" name="username" required>
@@ -9,10 +10,12 @@
             <span> Name: </span>  
             <input type="text" name="name">
         </label>
+        <p id="email_already_exists_error" class="error_message_invisible"> Email already exists </p>
         <label>
-            <span> E-mail:  </span> 
+            <span> E-mail:  </span>
             <input type="email" name="email">
         </label>
+        <p id="password_match_error" class="error_message_invisible"> Passwords must match </p>
         <label>
             <span> Password: </span> 
             <input type="password" name="password" required>

@@ -45,7 +45,7 @@ class AjaxFormSubmitAdapter extends AjaxRequestAdapterAbstract
                 if(error in this.eventHandlerMap)
                     this.eventHandlerMap[error]();
                 else
-                    AjaxLib.displayErrorAlert(responseErrorList);
+                    AjaxLib.displayErrorAlert(error);
             }
         }
     }
