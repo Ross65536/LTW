@@ -12,7 +12,7 @@
       echo 'style="text-decoration: line-through"';
     }?>>
       <input type="checkbox" <?= ($item['done'] == 1 ? 'checked' : '');?> disabled>
-      <?=$item['description']?>
+      <span class="item"><?=$item['description']?></span>
       <input type="hidden" value="<?=$item['description']?>" name="items[]"/>
     </li>
   <?}?>
@@ -31,7 +31,7 @@
     </li>
   <?}foreach ($listUsers as $user) {?>
     <li>
-      <?=$user['username']?>
+      <span class="username"><?=$user['username']?></span>
       <input type="hidden" value="<?=$user['username']?>" name="users[]"/>
     </li>
   <?}?>

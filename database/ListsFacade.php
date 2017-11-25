@@ -1,5 +1,5 @@
 <?php
-include_once('database/ConnectionBase.php');
+include_once('ConnectionBase.php');
 
 /**
  * Receives the database object (usualy the global $db) and provides a 'wrapper' class for manipulating the users table
@@ -75,6 +75,41 @@ class ListsFacade extends ConnectionBase
       } else {
         return $creator;
       }
+    }
+
+    public function itemExists($id, $description) {
+      $stmt = $this->db->prepare('SELECT id FROM list_items WHERE list_id = ? AND description = ?');
+      $stmt->execute(array($id, $description));
+
+      return($stmt->fetch() != null);
+    }
+
+    public function isUserOnList($id, $username) {
+      $stmt = $this->db->prepare('SELECT username FROM list_users WHERE list_id = ? AND username = ?');
+      $stmt->execute(array($id, $username));
+
+      return($stmt->fetch() != null);
+    }
+
+    public function removeUser($id, $username) {
+      $stmt = $this->db->prepare('DELETE FROM list_users WHERE list_id = ? AND username = ?');
+      $stmt->execute(array($id, $username));
+    }
+
+    public function removeItem($id, $description) {
+      $stmt = $this->db->prepare('DELETE FROM list_items WHERE list_id = ? AND description = ?');
+      $stmt->execute(array($id, $description));
+    }
+
+    public function addItem($id, $description) {
+      $stmt = $this->db->prepare('INSERT INTO list_items (list_id, description)
+      VALUES (?, ?)');
+      $stmt->execute(array($id, $description));
+    }
+
+    public function addUser($id, $username) {
+      $stmt = $this->db->prepare('INSERT INTO list_users (list_id, username) VALUES (?, ?)');
+      $stmt->execute(array($id, $username));
     }
 
     public function addList($name, $creator, $items, $users) {

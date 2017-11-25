@@ -16,7 +16,8 @@ CREATE TABLE list_items (
   list_id INTEGER,
   description VARCHAR,
   done INTEGER DEFAULT 0,
-  FOREIGN KEY (list_id) REFERENCES lists
+  FOREIGN KEY (list_id) REFERENCES lists,
+  UNIQUE (list_id, description)
 );
 
 DROP TABLE IF EXISTS list_users;
@@ -25,5 +26,6 @@ CREATE TABLE list_users (
   list_id INTEGER,
   username VARCHAR,
   FOREIGN KEY (list_id) REFERENCES lists,
-  FOREIGN KEY (username) REFERENCES users
+  FOREIGN KEY (username) REFERENCES users,
+  UNIQUE (list_id, username)
 );

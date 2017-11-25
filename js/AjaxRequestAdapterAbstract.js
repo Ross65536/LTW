@@ -4,7 +4,7 @@ class AjaxRequestAdapterAbstract
 {
     constructor()
     { }
-    
+
     sendRequest(ajaxActionURI)
     {
         let request = new XMLHttpRequest();
@@ -33,13 +33,14 @@ class AjaxRequestAdapterAbstract
     /************************************************************************/
     /*************    'private' methods                   *******************/
     /************************************************************************/
-    
+
     onLoadHandler(event)
     {
         let JSONResponseText = event.currentTarget.responseText;
+        console.log(JSONResponseText);
 
         let JSONResponseObject = JSON.parse(JSONResponseText);
         this.handleJSONResponseTemplate(JSONResponseObject);
     }
-    
+
 }

@@ -4,6 +4,11 @@ document.addEventListener('DOMContentLoaded', function() {
     buttons[i].addEventListener('click', function() {
       var choice = confirm('Confirm your intention to delete?');
       if (choice) {
+        if (this.parentNode.parentNode.getAttribute("id") == 'items_list') {
+          removeItem(this.parentNode.querySelector("span.item").innerHTML);
+        } else if (this.parentNode.parentNode.getAttribute("id") == 'users_list') {
+          removeUser(this.parentNode.querySelector("span.username").innerHTML);
+        }
         this.parentNode.parentNode.removeChild(this.parentNode);
       }
     });
@@ -22,23 +27,11 @@ document.addEventListener('DOMContentLoaded', function() {
       boxes[i].parentElement.style.textDecoration = 'line-through';
     }
   }
-
-  document.querySelector('input[name=name]').addEventListener('input', function(){
-    verifyFieldsFull();
-  });
+verifyFieldsFull();
 });
 
-function deleteList() {
-  let choice = confirm('Are you sure you want to proceed?');
-  if (choice) {
-    let request = new XMLHttpRequest();
-    //TODO
-  }
-}
-
 function verifyFieldsFull() {
-  if (document.querySelector('input[name=name]').value.length > 4
-  && document.getElementById('items_list').getElementsByTagName('li').length > 0) {
+  if (document.getElementById('items_list').getElementsByTagName('li').length > 0) {
     document.querySelector('input[type=submit]').style.display = 'block';
   } else {
     document.querySelector('input[type=submit]').style.display = 'none';
@@ -47,48 +40,54 @@ function verifyFieldsFull() {
 
 function addUser() {
   let request = new XMLHttpRequest();
-  request.open('get', 'ajax_calls.php?' + encodeForAjax({'function' : 'validUser', 'username' : document.querySelector("#user").value}), true);
+  request.open('get', 'PHP/actions/lists/ajax_list_edit.php?' + encodeForAjax({'function' : 'validUser',
+   'username' : document.querySelector("#user").value,
+   'id' : document.querySelector("input[name=id]").getAttribute("value")}), true);
   request.addEventListener('load', validUser);
   request.send();
 }
 
-function addItem() {
+function removeItem(description) {
+  let request = new XMLHttpRequest();
+  request.open('get', 'PHP/actions/lists/ajax_list_edit.php?' + encodeForAjax({'function' : 'removeItem',
+   'description' : description,
+   'id' : document.querySelector("input[name=id]").getAttribute("value")}), true);
+  request.send();
+}
 
+function removeUser(username) {
+  let request = new XMLHttpRequest();
+  request.open('get', 'PHP/actions/lists/ajax_list_edit.php?' + encodeForAjax({'function' : 'removeUser',
+   'username' : username,
+   'id' : document.querySelector("input[name=id]").getAttribute("value")}), true);
+  request.send();
+}
+
+function addItem() {
   let item = document.querySelector("#item").value;
 
   if (item.length < 1) {
     alert('[ERROR] Cannot add empty item to list.'); return;
   }
 
-  var itemsOnList = document.getElementById('items_list').getElementsByTagName('li');
-  let items = [];
-  var spans = document.querySelectorAll('.item');
+  let request = new XMLHttpRequest();
+  request.open('get', 'PHP/actions/lists/ajax_list_edit.php?' + encodeForAjax({'function' : 'distinctItem',
+   'id' : document.querySelector("input[name=id]").getAttribute('value'),
+   'description' : item}), true);
+  request.addEventListener('load', validItem);
+  request.send();
+}
 
-  for (var i = 0; i < spans.length; i++) {
-    items.push(spans[i].innerHTML);
-  }
-console.log(items);
-  if (items.indexOf(item) != -1) {
+function validItem() {
+
+  let item = document.querySelector("#item").value;
+  if (this.responseText == -1) {
     alert('[ERROR] That item is already on this list.');
-  } else {
-    let name = item.split(' ').join('_');
-    var ul = document.getElementById("items_list");
-    var li = document.createElement("li");
-    var input = document.createElement("input");
-    input.type = 'hidden';
-    input.value = name;
-    input.setAttribute('name', 'items[]');
-    var check = document.createElement("input");
-    check.type = 'checkbox';
-    check.setAttribute('name', item);
-    let deleteButton = createDeleteButton();
-    li.appendChild(check);
-    li.appendChild(document.createTextNode(item));
-    li.appendChild(input);
-    li.appendChild(deleteButton);
-    ul.appendChild(li);
+  } else if (this.responseText == 0) {
     document.querySelector("#item").value = "";
     verifyFieldsFull();
+  } else {
+    alert("Oops, something went wrong.");
   }
 };
 
@@ -98,33 +97,10 @@ console.log(items);
 function validUser() {
 
   let user = document.querySelector("#user").value;
-
-  var usersOnList = document.getElementById('users_list').getElementsByTagName('li');
-  let names = [];
-  var spans = document.querySelectorAll('.username');
-
-  for (var i = 0; i < spans.length; i++) {
-    names.push(spans[i].innerHTML);
-  }
-
-  if (names.indexOf(user) != -1) {
+  if (this.responseText == -3) {
     alert("[ERROR] That user is already on that list.");
   } else {
     if (this.responseText == 0) {
-      var ul = document.getElementById("users_list");
-      var li = document.createElement("li");
-      var input = document.createElement("input");
-      input.type = 'hidden';
-      input.value = user;
-      var span = document.createElement('span');
-      span.className = "username";
-      input.setAttribute('name', 'users[]');
-      let deleteButton = createDeleteButton();
-      li.appendChild(span);
-      span.appendChild(document.createTextNode(user));
-      li.appendChild(input);
-      li.appendChild(deleteButton);
-      ul.appendChild(li);
       document.querySelector("#user").value = "";
     } else if (this.responseText == -1) {
       alert('[ERROR] You cannot add yourself.');
@@ -148,8 +124,12 @@ function createDeleteButton() {
   deleteButton.addEventListener('click', function() {
     var choice = confirm('Confirm your intention to delete?');
     if (choice) {
-      this.parentNode.parentNode.removeChild(this.parentNode);
-      verifyFieldsFull();
+        if (this.parentNode.parentNode.getAttribute("id") == 'items_list') {
+          removeItem(this.parentNode.querySelector("span.item").innerHTML);
+        } else if (this.parentNode.parentNode.getAttribute("id") == 'users_list') {
+          removeUser(this.parentNode.querySelector("span.username").innerHTML);
+        }
+        this.parentNode.parentNode.removeChild(this.parentNode);
     }
   });
   return deleteButton;

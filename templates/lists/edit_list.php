@@ -1,9 +1,13 @@
 <form class="edit-form" action="action_save_list.php" method="post">
   <input type="hidden" name="id" value="<?=$_GET['id']?>"/>
   <input type="hidden" name="creator" value="<?=$creator?>"/>
+  <? if ($creator == 'you') {?>
   <label>
     Title <input type="text" name="name" value="<?=$title?>"/>
   </label>
+  <?} else {?>
+    <h2><?=$title?></h2>
+    <?}?>
   <ul id="items_list">
     <h3>Items List</h3><?
     foreach ($listItems as $item) {

@@ -8,7 +8,9 @@ $id = $_GET['id'];
 
 try {
   $listDB->deleteList($id);
-  Session\redirectBack();
+
+  $php_index_path = '../../../index.php';
+  Session\redirectTo($php_index_path);
 } catch (PDOException $e) {
   die($e->getMessage());
 }

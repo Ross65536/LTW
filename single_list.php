@@ -11,6 +11,8 @@
 
   Session\redirectBackIfNotLoggedIn();
 
+  echo '<script src="js/lists/update_elements.js"></script>';
+
   $main_info = $listsDB->getListMainInfo($_GET['id']);
   $creator = $listsDB->displayCreator($_GET['id']);
   $listItems = $listsDB->getListItems($_GET['id']);
