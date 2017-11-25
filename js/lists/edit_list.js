@@ -19,8 +19,10 @@ document.addEventListener('DOMContentLoaded', function() {
     boxes[i].addEventListener('change', function() {
       if (this.checked) {
         this.parentElement.style.textDecoration = 'line-through';
+        updateCheckbox(this.name.split('_').join(' '), true);
       } else {
         this.parentElement.style.textDecoration = '';
+        updateCheckbox(this.name.split('_').join(' '), false);
       }
     });
     if (boxes[i].checked) {
@@ -38,7 +40,23 @@ function verifyFieldsFull() {
   }
 }
 
+function updateCheckbox(description, value) {
+  let request = new XMLHttpRequest();
+  request.open('get', 'PHP/actions/lists/ajax_list_edit.php?' + encodeForAjax({'function' : 'updateDone',
+   'description' : description,
+   'value' : value,
+   'id' : document.querySelector("input[name=id]").getAttribute("value")}), true);
+  request.addEventListener('load', updateItems);
+  request.send();
+}
+
 function addUser() {
+
+  try {
+    toggleLoader(true);
+  } catch (e) {
+
+  }
   let request = new XMLHttpRequest();
   request.open('get', 'PHP/actions/lists/ajax_list_edit.php?' + encodeForAjax({'function' : 'validUser',
    'username' : document.querySelector("#user").value,
@@ -64,6 +82,11 @@ function removeUser(username) {
 }
 
 function addItem() {
+  try {
+    toggleLoader(true);
+  } catch (e) {
+
+  }
   let item = document.querySelector("#item").value;
 
   if (item.length < 1) {
@@ -133,4 +156,14 @@ function createDeleteButton() {
     }
   });
   return deleteButton;
+}
+
+function toggleLoader(status) {
+  if (status) {
+    document.querySelector('.edit-form').style.opacity = 0.7;
+    document.querySelector('.loader').style.display = "inline";
+  } else {
+    document.querySelector('.edit-form').style.opacity = 1;
+    document.querySelector('.loader').style.display = "none";
+  }
 }

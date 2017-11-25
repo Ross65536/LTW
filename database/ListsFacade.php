@@ -112,6 +112,12 @@ class ListsFacade extends ConnectionBase
       $stmt->execute(array($id, $username));
     }
 
+    public function updateDone($id, $description, $value) {
+      $stmt = $this->db->prepare('UPDATE list_items SET done = ? WHERE list_id = ? AND description = ?');
+      $done = $value == 'true' ? 1 : 0;
+      $stmt->execute(array($done, $id, $description));
+    }
+
     public function addList($name, $creator, $items, $users) {
       $stmt = $this->db->prepare('INSERT INTO lists (name, date_created, creator)
       VALUES (?, ?, ?)');

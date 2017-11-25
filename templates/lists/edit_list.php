@@ -1,3 +1,4 @@
+
 <form class="edit-form" action="action_save_list.php" method="post">
   <input type="hidden" name="id" value="<?=$_GET['id']?>"/>
   <input type="hidden" name="creator" value="<?=$creator?>"/>
@@ -8,8 +9,11 @@
   <?} else {?>
     <h2><?=$title?></h2>
     <?}?>
+    <h3>Items List</h3>
   <ul id="items_list">
-    <h3>Items List</h3><?
+    <div class="loader">
+
+    </div><?
     foreach ($listItems as $item) {
       $name = str_replace(' ', '_', $item['description']);?>
       <li>
@@ -25,8 +29,8 @@
     New Item: <input type="text" id="item"/>
     <button type="button" class="add-btn" onclick="addItem()">Add</button>
   </label>
-  <ul id="users_list">
-      <h3>Users</h3><?
+      <h3>Users</h3>
+  <ul id="users_list"><?
       foreach ($listUsers as $user) {?>
           <li>
             <span class="username"><?=$user['username']?></span>

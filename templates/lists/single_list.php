@@ -10,8 +10,9 @@
   foreach ($listItems as $item) {?>
     <li <?if ($item['done'] == 1) {
       echo 'style="text-decoration: line-through"';
-    }?>>
-      <input type="checkbox" <?= ($item['done'] == 1 ? 'checked' : '');?> disabled>
+
+    }$name = str_replace(' ', '_', $item['description']);?>>
+      <input type="checkbox" name="<?=$name?>" <?= ($item['done'] == 1 ? 'checked' : '');?>disabled>
       <span class="item"><?=$item['description']?></span>
       <input type="hidden" value="<?=$item['description']?>" name="items[]"/>
     </li>

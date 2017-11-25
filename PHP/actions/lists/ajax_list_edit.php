@@ -39,4 +39,9 @@ if (isset($_GET['function']) && $_GET['function'] == 'removeUser') {
     $listsDB->removeUser($_GET['id'], $_GET['username']);
     echo 0;
 }
+
+if (isset($_GET['function']) && $_GET['function'] == 'updateDone') {
+    $listsDB->updateDone($_GET['id'], $_GET['description'], $_GET['value']);
+    echo 0;
+}
 ?>

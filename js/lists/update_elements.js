@@ -1,4 +1,12 @@
 
+var pageName = (function () {
+    var a = window.location.href,
+        b = a.lastIndexOf("/");
+    a = a.substr(b + 1);
+    b = a.lastIndexOf('?');
+    return a.substr(0, b);
+}());
+
 var allItems = [];
 var allUsers = [];
 /* Initialize the items and users arrays */
@@ -21,13 +29,31 @@ function updateArrays() {
   }
 }
 
+function updateBoxes(items) {
+  for (var i = 0; i < items.length; i++) {
+    var name = items[i].description.split(" ").join('_');
+    var box = document.querySelector('input[name=' + name + ']');
+    if (items[i].done == 0) {
+      box.checked = false;
+      box.parentElement.style.textDecoration = '';
+    }
+    else {
+      box.checked = true;
+      box.parentElement.style.textDecoration = 'line-through';
+    }
+    if (pageName == 'single_list.php') {
+      box.disabled = true;
+    }
+  }
+}
+
 function updateElements() {
    updateItems();
    updateUsers();
    updateArrays();
 }
 
-window.setInterval(updateElements, 2000);
+window.setInterval(updateElements, 1000);
 
 function updateItems() {
   let requestItems = new XMLHttpRequest();
@@ -62,6 +88,7 @@ function updateUsers() {
 }
 
 function addItems(items) {
+
   var itemsInDB = [];
     for (var i = 0; i < items.length; i++) {
       var item = items[i].description;
@@ -82,7 +109,19 @@ function addItems(items) {
         input.setAttribute('name', 'items[]');
         var check = document.createElement("input");
         check.type = 'checkbox';
-        check.setAttribute('name', item);
+        check.setAttribute('name', name);
+        check.addEventListener('change', function() {
+          if (this.checked) {
+            this.parentElement.style.textDecoration = 'line-through';
+            updateCheckbox(this.name.split('_').join(' '), true);
+          } else {
+            this.parentElement.style.textDecoration = '';
+            updateCheckbox(this.name.split('_').join(' '), false);
+          }
+        });
+        if (pageName == 'single_list.php') {
+          check.disabled = true;
+        }
         li.appendChild(check);
         li.appendChild(span);
         span.appendChild(document.createTextNode(item));
@@ -97,6 +136,13 @@ function addItems(items) {
         verifyFieldsFull();
       }
     }
+
+      updateBoxes(items);
+      try {
+        toggleLoader(false);
+      } catch (e) {
+
+      }
 }
 
 function addUsers(users) {
@@ -125,6 +171,11 @@ function addUsers(users) {
       }
       ul.appendChild(li);
     }
+  }
+  try {
+    toggleLoader(false);
+  } catch (e) {
+
   }
 }
 
