@@ -1,11 +1,12 @@
 <?php
 
 include_once(__DIR__ . '/ConnectionBase.php');
+include_once(__DIR__ . '/IUsersGetInfo.php');
 
 /**
  * Receives the database object (usualy the global $db) and provides a 'wrapper' class for manipulating the users table
  */
-class UsersFacade extends ConnectionBase
+class UsersFacade extends ConnectionBase implements IUsersGetInfo
 {
     /////////////////////////////////////////////////////////////
     ////////// public 

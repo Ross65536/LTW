@@ -9,7 +9,7 @@
         
 
         <?php if(Session\isLoggedIn()) { ?>
-            <p id="display_username" >Hello <?=Session\getLoginUsername()?></p>
+            <p id="display_username" >Hello <?=htmlentities(Session\getLoginUsername())?></p>
         <? } ?>
 
         <ul id="accounts_bar">

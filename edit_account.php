@@ -5,11 +5,13 @@
   include_once('templates/accounts/account_head.php');
   include_once('templates/common/header.php');
   
+  include_once('database/UsersHTMLDecorator.php');
+
   if(Session\isLoggedIn())
   {
     include_once('database/UsersFacade.php'); 
     
-    $usersDB = new UsersFacade();
+    $usersDB = new UsersHTMLDecorator(new UsersFacade());
     $username = Session\getLoginUsername();
     $info = $usersDB->getSecondaryInfo($username);
 
