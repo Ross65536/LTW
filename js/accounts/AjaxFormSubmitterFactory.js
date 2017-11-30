@@ -49,7 +49,6 @@ class AjaxFormSubmitterFactory
 		let usernameError = form.querySelector('#username_already_exists_error');
 		let emailError = form.querySelector('#email_already_exists_error');
 		let passwordMatchError = form.querySelector('#password_match_error');
-
 		
 		let registerErrorMap = 
 		{
@@ -78,7 +77,7 @@ class AjaxFormSubmitterFactory
 		let emailError = form.querySelector('#email_already_exists_error2');
 		let passwordMatchError = form.querySelector('#password_match_error2');
 		let wrongPasswordError = form.querySelector('#wrong_password_error');
-
+		let editSuccess = form.querySelector('#successfuly_edited_account_message');
 		
 		let registerErrorMap = 
 		{
@@ -86,6 +85,8 @@ class AjaxFormSubmitterFactory
 			"wrong_password_error" : DOMLib.getBindShowError(wrongPasswordError),
 			"password_match_error" : DOMLib.getBindShowError(passwordMatchError),
 		};
+		let showMsgFun = DOMLib.getBindTimedShowSuccess(editSuccess);
+
 		
 		let inputEmail = form.querySelector('input[name="email"]');
         let inputOldPassword = form.querySelector('input[name="old_password"]');		
@@ -98,7 +99,7 @@ class AjaxFormSubmitterFactory
 		AjaxFormSubmitterFactory.disableSubmitOnUnmatchingPassword(inputNewPassword, inputConfirmNewPassword, passwordMatchError, submitButton);
 
 		let ajaxActionPath = "PHP/actions/accounts/ajax_edit_account.php";
-		let adapter = new AjaxFormSubmitAdapter(ajaxActionPath, registerErrorMap, AjaxLib.redirectTo.bind(null, "index.php"));
+		let adapter = new AjaxFormSubmitAdapter(ajaxActionPath, registerErrorMap, showMsgFun);
 		return adapter;
 	}
 
@@ -133,6 +134,11 @@ class AjaxFormSubmitterFactory
 			
 		passInput.addEventListener("change", passMatchChecker);
 		confirmPassInput.addEventListener("change", passMatchChecker);
+
+	}
+
+	static showSuccessMessage(msgElem)
+	{
 
 	}
 }

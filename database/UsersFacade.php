@@ -22,7 +22,7 @@ class UsersFacade extends ConnectionBase
         
         $found_password = $column['password'];
 
-        if($this->hashPassword($password) === $found_password)
+        if($this->verifyPassword($password, $found_password))
             return true;
         else
             return false;
@@ -166,7 +166,12 @@ class UsersFacade extends ConnectionBase
 
     private function hashPassword($password)
     {
-        return sha1($password);
+        return password_hash($password, PASSWORD_DEFAULT);
+    }
+
+    private function verifyPassword($password, $hashedPassword)
+    {
+        return password_verify($password, $hashedPassword);
     }
 
     /**
