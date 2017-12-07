@@ -12,9 +12,8 @@
     include_once('database/UsersFacade.php'); 
     
     $usersDB = new UsersHTMLDecorator(new UsersFacade());
-    $username = Session\getLoginUsername();
-    $info = $usersDB->getSecondaryInfo($username);
-
+    $username = Session\getHTMLLogin();
+    $info = $usersDB->getSecondaryInfo(Session\getLoginUsername());
     $name = $info["name"]; //can be ""
     $email = $info["email"];
 
