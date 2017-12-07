@@ -33,6 +33,13 @@ class HTMLDecoratorBase
         return html_entity_decode($text);
     }
 
+    protected function decodeMap($map)
+    {
+        foreach ($map as $key => $value)
+            $map[$key] = $this->decodeString($value);
+
+        return $map;
+    }
 
 }
 
