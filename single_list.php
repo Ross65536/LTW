@@ -9,7 +9,10 @@
 
   $listsDB = new ListsFacade();
 
-  Session\redirectBackIfNotLoggedIn();
+  if(! Session\isLoggedIn()) {
+    include_once('templates/accounts/login.php');
+    $_SESSION['error'] = 'not_logged_in';
+  }
 
   echo '<script src="js/lists/common_functions.js"></script>';
   echo '<script src="js/lists/update_elements.js"></script>';

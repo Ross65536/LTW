@@ -1,4 +1,7 @@
-
+<?
+if (!isset($_SESSION['username']))
+  header('Location: index.php');
+if (in_array($_SESSION['username'], $listUsers, true)) {?>
 <form class="edit-form" action="action_save_list.php" method="post">
   <input type="hidden" name="id" value="<?=$_GET['id']?>"/>
   <input type="hidden" name="creator" value="<?=$creator?>"/>
@@ -52,4 +55,7 @@
     <input type="hidden" name="id" value="<?=$_GET['id']?>"/>
     <input type="submit" class="delete-btn" value="Delete List"/>
   </form>
-<?}?>
+<?}
+} else {
+  header ('Location: my_lists.php');
+}?>
