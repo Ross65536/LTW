@@ -1,8 +1,5 @@
 <?php
-
-  include_once('PHP/CommonInit.php');ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+  include_once('PHP/CommonInit.php'); 
 
   $BrowserTabTitle = "Edit List";
   include_once('templates/lists/list_head.php');
@@ -16,6 +13,7 @@ error_reporting(E_ALL);
     $_SESSION['error'] = 'not_logged_in';
   }
   else {
+    echo '<script src="js/lists/common_functions.js"></script>';
     echo '<script src="js/lists/edit_list.js"></script>';
     echo '<script src="js/lists/update_elements.js"></script>';
 
