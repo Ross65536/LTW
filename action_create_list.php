@@ -1,6 +1,8 @@
 <?
 include_once('database/ListsFacade.php');
-$listDB = new ListsFacade();
+include_once('database/ListsHTMLDecorator.php');
+
+$listDB = new ListsHTMLDecorator(new ListsFacade());
 
 $creator = $_POST['creator'];
 $name = $_POST['name'];
