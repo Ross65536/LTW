@@ -1,5 +1,5 @@
 <?php
-  include_once('PHP/CommonInit.php'); 
+  include_once('PHP/CommonInit.php');
 
   $BrowserTabTitle = "Edit List";
   include_once('templates/lists/list_head.php');
@@ -9,8 +9,7 @@
   $listDB = new ListsFacade();
 
   if(! Session\isLoggedIn()) {
-    include_once('templates/accounts/login.php');
-    $_SESSION['error'] = 'not_logged_in';
+    Session\redirectTo('login.php');
   }
   else {
     echo '<script src="js/lists/common_functions.js"></script>';
