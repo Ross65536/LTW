@@ -3,6 +3,7 @@
     <h1>Edit Account Information:</h1>
     <h3>Edit the fields you want to change and enter your password for confirmation. </h3>
     <form action="#">
+        <?php include_once('templates/form_key.php'); ?>
         <label>
             <span> Name: </span>
             <input type="text" name="name" value="<?=$name?>" >

@@ -1,9 +1,13 @@
 <?php
     include_once(__DIR__ . '/../../CommonInit.php');
-    Session\redirectBackIfLoggedIn();
+    if( Session\isLoggedIn())
+        AjaxReply\returnErrors(["already_logged_in"]);
     include_once(__DIR__ . '/../AjaxReply.php');
     include_once(__DIR__ . '/../../../database/UsersFacade.php');
 
+    include_once(__DIR__ . '/../../Forms.php');
+    if( ! Forms\checkFormKeyCorrect($_GET['form_key']))
+        AjaxReply\returnError("bad_form_key");
 
     $username = $_GET['username'];
     $password = $_GET['password'];

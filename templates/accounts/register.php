@@ -1,6 +1,7 @@
 <section id="register" class="account">
     <h1>Register</h1>
     <form action="#">
+        <?php include_once('templates/form_key.php'); ?>
         <p id="username_already_exists_error" class="error_message_invisible"> Username already exists </p>
         <label>
             <span> Username: </span> 
