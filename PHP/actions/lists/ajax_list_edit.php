@@ -4,9 +4,10 @@
   ini_set('display_startup_errors', 1);
   error_reporting(E_ALL);
   include_once('../../../database/UsersFacade.php');
+  include_once('../../../database/UsersHTMLDecorator.php');
   include_once('../../../database/ListsFacade.php');
 
-  $userDB = new UsersFacade();
+  $userDB = new UsersHTMLDecorator(new UsersFacade());
   $listsDB = new ListsFacade();
 if (isset($_GET['function']) && $_GET['function'] == 'validUser') {
     if ($_GET['username'] == $_SESSION['username']) {

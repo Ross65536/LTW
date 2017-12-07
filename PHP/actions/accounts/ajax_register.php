@@ -4,7 +4,7 @@
         AjaxReply\returnErrors(["already_logged_in"]);
     include_once(__DIR__ . '/../AjaxReply.php');
     include_once(__DIR__ . '/../../../database/UsersFacade.php');
-
+    include_once(__DIR__ . '/../../../database/UsersHTMLDecorator.php');
     include_once(__DIR__ . '/../../Forms.php');
     if( ! Forms\checkFormKeyCorrect($_GET['form_key']))
         AjaxReply\returnError("bad_form_key");
@@ -20,7 +20,7 @@
         
     if($password === $confirmPassword)
     {
-        $usersDB = new UsersFacade();
+        $usersDB = new UsersHTMLDecorator(new UsersFacade());
         $error_list = [];
         
         if($usersDB->checkUsernameExists($username))

@@ -3,12 +3,13 @@
     Session\redirectBackIfLoggedIn();
     include_once(__DIR__ . '/../AjaxReply.php');
     include_once(__DIR__ . '/../../../database/UsersFacade.php');
-
+    include_once(__DIR__ . '/../../../database/UsersHTMLDecorator.php');
+    
 
     $username = $_GET['username'];
     $password = $_GET['password'];
 
-    $usersDB = new UsersFacade();
+    $usersDB = new UsersHTMLDecorator(new UsersFacade());
     $userExists = $usersDB->checkValidUserLoginInfo($username, $password);
 
     if($userExists)

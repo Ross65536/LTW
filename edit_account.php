@@ -4,7 +4,6 @@
   $BrowserTabTitle = "Edit Account";
   include_once('templates/accounts/account_head.php');
   include_once('templates/common/header.php');
-  
   include_once('database/UsersHTMLDecorator.php');
 
   if(Session\isLoggedIn())
