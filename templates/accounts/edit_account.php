@@ -21,7 +21,8 @@
             <span> Confirm New Password: </span>
             <input type="password" name="confirm_new_password">
         </label>
-        <p id="wrong_password_error" class="error_message_invisible"> Password Invalid </p> 
+        <p id="wrong_password_error" class="error_message_invisible"> Password Invalid </p> 		
+        <p id="successfuly_edited_account_message" class="success_message_invisible"> Account Edited Successfuly </p>
         <label id="old_password">
             <span> Enter Old Password: </span>
             <input type="password" name="old_password" required>

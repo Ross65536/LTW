@@ -46,14 +46,19 @@ footer {
     text-align: right;
 }
 
-.error_message_invisible
+.error_message_invisible, .success_message_invisible
 {
     display: none;   
 }
 
-.error_message 
+.error_message
 {
     color: red;
+}
+
+.success_message
+{
+    color: green;   
 }
 
 ul li, #display_username {

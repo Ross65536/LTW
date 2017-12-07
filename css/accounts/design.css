@@ -57,13 +57,24 @@
     font-size: 1.2rem;		
     margin-bottom: 2rem;		
 }
-.error_message 
+
+.error_message, .success_message
 {
     padding: 1rem 0.5rem ;
-    color: rgb(255, 0, 0);
-    background-color: rgb(250, 195, 195);
     border-radius: 5px;
     font-weight: bold;
+}
+
+.error_message
+{
+    color: rgb(255, 0, 0);
+    background-color: rgb(250, 195, 195);   
+}
+
+.success_message
+{
+    color: green;
+    background-color: #98FB98;      
 }
 
 
