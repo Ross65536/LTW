@@ -144,8 +144,10 @@ class ListsFacade extends ConnectionBase
     }
 
     public function updateList($id, $name, $items, $users) {
-      $stmt = $this->db->prepare('UPDATE lists SET name = ? WHERE id = ?');
-      $stmt->execute(array($name, $id));
+      if ($name != '') {
+        $stmt = $this->db->prepare('UPDATE lists SET name = ? WHERE id = ?');
+        $stmt->execute(array($name, $id));
+      }
 
       $stmt = $this->db->prepare('DELETE FROM list_items WHERE list_id = ?');
       $stmt->execute(array($id));

@@ -1,4 +1,7 @@
 
+var itemsInDB = [];
+var usersInDB = [];
+
 var pageName = (function () {
     var a = window.location.href,
         b = a.lastIndexOf("/");
@@ -6,28 +9,6 @@ var pageName = (function () {
     b = a.lastIndexOf('?');
     return a.substr(0, b);
 }());
-
-var allItems = [];
-var allUsers = [];
-/* Initialize the items and users arrays */
-document.addEventListener("DOMContentLoaded", function() {
-  updateArrays();
-});
-
-function updateArrays() {
-  var itemsSpans = document.querySelectorAll("span.item");
-  for (var i = 0; i < itemsSpans.length; i++) {
-    if (allItems.indexOf(itemsSpans[i].innerHTML) == -1)
-      allItems.push(itemsSpans[i].innerHTML);
-  }
-
-  var usersSpans = document.querySelectorAll("span.username");
-
-  for (var i = 0; i < usersSpans.length; i++) {
-    if (allItems.indexOf(usersSpans[i].innerHTML) == -1)
-      allUsers.push(usersSpans[i].innerHTML);
-  }
-}
 
 function updateBoxes(items) {
   for (var i = 0; i < items.length; i++) {
@@ -88,8 +69,7 @@ function updateUsers() {
 }
 
 function addItems(items) {
-
-  var itemsInDB = [];
+  itemsInDB = [];
     for (var i = 0; i < items.length; i++) {
       var item = items[i].description;
       itemsInDB.push(item);
@@ -98,78 +78,30 @@ function addItems(items) {
 
         allItems.push(item);
 
-        let name = item.split(' ').join('_');
-        var ul = document.getElementById("items_list");
-        var li = document.createElement("li");
-        var input = document.createElement("input");
-        var span = document.createElement('span');
-        span.className = 'item';
-        input.type = 'hidden';
-        input.value = name;
-        input.setAttribute('name', 'items[]');
-        var check = document.createElement("input");
-        check.type = 'checkbox';
-        check.setAttribute('name', name);
-        check.addEventListener('change', function() {
-          if (this.checked) {
-            this.parentElement.style.textDecoration = 'line-through';
-            updateCheckbox(this.name.split('_').join(' '), true);
-          } else {
-            this.parentElement.style.textDecoration = '';
-            updateCheckbox(this.name.split('_').join(' '), false);
-          }
-        });
-        if (pageName == 'single_list.php') {
-          check.disabled = true;
-        }
-        li.appendChild(check);
-        li.appendChild(span);
-        span.appendChild(document.createTextNode(item));
-        li.appendChild(input);
-        try {
-          let deleteButton = createDeleteButton();
-          li.appendChild(deleteButton);
-        } catch (e) {
-
-        }
-        ul.appendChild(li);
-        verifyFieldsFull();
+        addSingleItem(item);
       }
     }
-
-      updateBoxes(items);
       try {
+        updateBoxes(items);
         toggleLoader(false);
       } catch (e) {
 
       }
+
+      if (!itemsInDB.sort().compare(allItems.sort()))
+        removeExtraItems();
 }
 
 function addUsers(users) {
+  usersInDB = [];
   for (var i = 0; i < users.length; i++) {
     var username = users[i].username;
-    //if the item does not exist in the list
+    usersInDB.push(username);
+    //if the user does not exist in the list
     if (allUsers.indexOf(username) == -1) {
       allUsers.push(username);
 
-      var ul = document.getElementById("users_list");
-      var li = document.createElement("li");
-      var input = document.createElement("input");
-      input.type = 'hidden';
-      input.value = username;
-      var span = document.createElement('span');
-      span.className = "username";
-      input.setAttribute('name', 'users[]');
-      li.appendChild(span);
-      span.appendChild(document.createTextNode(username));
-      li.appendChild(input);
-      try {
-        let deleteButton = createDeleteButton();
-        li.appendChild(deleteButton);
-      } catch (e) {
-
-      }
-      ul.appendChild(li);
+      addSingleUser(username);
     }
   }
   try {
@@ -177,10 +109,51 @@ function addUsers(users) {
   } catch (e) {
 
   }
+
+  if (!usersInDB.sort().compare(allUsers.sort()))
+    removeExtraUsers();
 }
 
-function encodeForAjax(data) {
-  return Object.keys(data).map(function(k){
-    return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
-  }).join('&');
+function removeExtraItems() {
+  var itemsSpans = document.querySelectorAll("span.item");
+  for (var i = 0; i < itemsSpans.length; i++) {
+    if (itemsInDB.indexOf(itemsSpans[i].innerHTML) == -1) {
+      removeFromArray(itemsSpans[i].innerHTML, allItems);
+      var li = itemsSpans[i].parentElement;
+      li.remove();
+    }
+  }
+}
+
+function removeExtraUsers() {
+  var usersSpans = document.querySelectorAll("span.username");
+  for (var i = 0; i < usersSpans.length; i++) {
+    if (usersInDB.indexOf(usersSpans[i].innerHTML) == -1) {
+      removeFromArray(usersSpans[i].innerHTML, allUsers);
+      var li = usersSpans[i].parentElement;
+      li.remove();
+    }
+  }
+}
+
+Array.prototype.compare = function(testArr) {
+    if (this.length != testArr.length) return false;
+    for (var i = 0; i < testArr.length; i++) {
+        if (this[i].compare) { //To test values in nested arrays
+            if (!this[i].compare(testArr[i])) return false;
+        }
+        else if (this[i] !== testArr[i]) return false;
+    }
+    return true;
+}
+
+Element.prototype.remove = function() {
+    this.parentElement.removeChild(this);
+}
+NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
+    for(var i = this.length - 1; i >= 0; i--) {
+        if(this[i] && this[i].parentElement) {
+            this[i].parentElement.removeChild(this[i]);
+        }
+    }
 }

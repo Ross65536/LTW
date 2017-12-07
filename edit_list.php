@@ -16,6 +16,7 @@ error_reporting(E_ALL);
     $_SESSION['error'] = 'not_logged_in';
   }
   else {
+    echo '<script src="js/lists/common_functions.js"></script>';
     echo '<script src="js/lists/edit_list.js"></script>';
     echo '<script src="js/lists/update_elements.js"></script>';
 

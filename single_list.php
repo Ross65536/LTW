@@ -11,6 +11,7 @@
 
   Session\redirectBackIfNotLoggedIn();
 
+  echo '<script src="js/lists/common_functions.js"></script>';
   echo '<script src="js/lists/update_elements.js"></script>';
 
   $main_info = $listsDB->getListMainInfo($_GET['id']);

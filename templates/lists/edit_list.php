@@ -2,6 +2,7 @@
 <form class="edit-form" action="action_save_list.php" method="post">
   <input type="hidden" name="id" value="<?=$_GET['id']?>"/>
   <input type="hidden" name="creator" value="<?=$creator?>"/>
+  <input type="hidden" name="type" value="edit"/>
   <? if ($creator == 'you') {?>
   <label>
     Title <input type="text" name="name" value="<?=$title?>"/>
