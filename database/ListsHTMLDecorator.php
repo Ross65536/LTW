@@ -1,9 +1,9 @@
 <?php
 
-include_once(__DIR__ . '/IUsersGetInfo.php');
+include_once(__DIR__ . '/IListsGetInfo.php');
 include_once(__DIR__ . '/HTMLDecoratorBase.php');
 
-class UsersHTMLDecorator extends HTMLDecoratorBase implements IUsersGetInfo
+class ListsHTMLDecorator extends HTMLDecoratorBase implements IListsGetInfo
 {
     public function getSecondaryInfo($username)
     {

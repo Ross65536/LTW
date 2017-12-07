@@ -1,10 +1,12 @@
 <?php
+
 include_once('ConnectionBase.php');
+include_once(__DIR__ . '/IListsGetInfo.php');
 
 /**
  * Receives the database object (usualy the global $db) and provides a 'wrapper' class for manipulating the users table
  */
-class ListsFacade extends ConnectionBase
+class ListsFacade extends ConnectionBase implements IListsGetInfo
 {
     /////////////////////////////////////////////////////////////
     ////////// public
