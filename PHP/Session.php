@@ -57,6 +57,11 @@
         return $_SESSION['username'];
     }
 
+    function getHTMLLogin()
+    {
+        return htmlentities($_SESSION['username']);
+    }
+
     /**
      * @return true if user was logged and is then logged out
      */
