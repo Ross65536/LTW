@@ -5,9 +5,11 @@
   error_reporting(E_ALL);
   include_once('../../../database/UsersFacade.php');
   include_once('../../../database/ListsFacade.php');
+  include_once('database/ListsHTMLDecorator.php');
 
   $userDB = new UsersFacade();
-  $listsDB = new ListsFacade();
+  $listsDB = new ListsHTMLDecorator(new ListsFacade());
+  
 if (isset($_GET['function']) && $_GET['function'] == 'validUser') {
     if ($_GET['username'] == $_SESSION['username']) {
       echo -1;

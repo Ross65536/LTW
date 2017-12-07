@@ -6,8 +6,9 @@
   include_once('templates/lists/list_head.php');
   include_once('templates/common/header.php');
   include_once('database/ListsFacade.php');
-
-  $listsDB = new ListsFacade();
+  include_once('database/ListsHTMLDecorator.php');
+  
+  $listsDB = new ListsHTMLDecorator(new ListsFacade());
 
   if(! Session\isLoggedIn()) {
     include_once('templates/accounts/login.php');
