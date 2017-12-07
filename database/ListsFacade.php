@@ -30,12 +30,29 @@ class ListsFacade extends ConnectionBase
     }
 
     public function retrieveAllListsOfUser($username) {
+      $created = $this->getAllListsCreatedByUser($username);
+      $belongs = $this->getAllListUserBelongs($username);
+
+      return array_merge($created, $belongs);
+    }
+
+    function getAllListsCreatedByUser($username) {
       $stmt = $this->db->prepare('SELECT lists.id, lists.name, lists.date_created, lists.creator
-        FROM lists,list_users
-         WHERE lists.creator = ? OR list_users.username = ? AND lists.id = list_users.list_id
+        FROM lists
+         WHERE lists.creator = ?
          GROUP BY lists.id');
 
-      $stmt->execute(array($username, $username));
+      $stmt->execute(array($username));
+      return $stmt->fetchAll();
+    }
+
+    function getAllListUserBelongs($username) {
+      $stmt = $this->db->prepare('SELECT lists.id, lists.name, lists.date_created, lists.creator
+        FROM lists, list_users
+         WHERE list_users.username = ? AND lists.id = list_users.list_id
+         GROUP BY lists.id');
+
+      $stmt->execute(array($username));
       return $stmt->fetchAll();
     }
 
