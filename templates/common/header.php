@@ -1,9 +1,14 @@
 
 
 <body>
+
+<div id="container">
+
     <header id="header">
         <a href="index.php" id="title">
-            <img id="logo_image" src="images/todo_image.png" alt="logo">  
+            <div>
+            <img id="logo_image" src="images/logo2.png" alt="logo">
+            </div>  
             <h1> TODO Lists</h1>
         </a>
         
@@ -14,8 +19,8 @@
 
         <ul id="accounts_bar">
             <?php  if(! Session\isLoggedIn()) { ?>
-                <li><a href="register.php">Register</a></li>
-                <li><a href="login.php">Login</a></li>
+                <li><a id="register" href="register.php">Register</a></li>
+                <li><a id="login" href="login.php">Login</a></li>
             <?php } else { ?>
                 <li><a href="my_lists.php">My Lists</a></li>
                 <li><a href="edit_account.php">Edit Account</a></li>
@@ -23,10 +28,12 @@
             <?php } ?>
         </ul>
 
+
         <!-- <menu> 
             <ul>
                 <li><a href="index.php">??</a></li>
             </ul>
         </menu> -->
     </header>
+
     <div id="body-section">

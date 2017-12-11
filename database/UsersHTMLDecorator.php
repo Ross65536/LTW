@@ -1,28 +1,54 @@
 <?php
 
-include_once(__DIR__ . '/IUsersGetInfo.php');
+include_once(__DIR__ . '/IUserDB.php');
+include_once(__DIR__ . '/HTMLDecoratorBase.php');
 
-class UsersHTMLDecorator implements IUsersGetInfo
+class UsersHTMLDecorator extends HTMLDecoratorBase implements IUserDB
 {
-    public function __construct($instance) {
-        $this->instance = $instance;
-    }
-
     public function getSecondaryInfo($username)
     {
         $map = $this->instance->getSecondaryInfo($username);
+        return $this->prepareStringMap($map);
+    }   
 
-
-        foreach ($map as $key => $value)
-            $map[$key] = $this->prepareHTML($value);
-        
-
-        return $map;
+    public function checkValidUserLoginInfo($username, $password)
+    {
+        $username = $this->decodeString($username);
+        return $this->instance->checkValidUserLoginInfo($username, $password);
+    }
+    
+    public function checkUsernameExists($username)
+    {
+        $username = $this->decodeString($username);
+        return $this->instance->checkUsernameExists($username);
     }
 
-    private function prepareHTML($text)
+    public function checkEmailExists($email)
     {
-        return htmlentities($text);
+        $email = $this->decodeString($email);
+        return $this->instance->checkEmailExists($email);
+    }
+
+    public function addUser($username, $password, $name, $email)
+    {
+        $username = $this->decodeString($username);
+        $email = $this->decodeString($email);
+        $name = $this->decodeString($name);
+        return $this->instance->addUser($username, $password, $name, $email);
+    }
+
+
+    public function updateSecondaryInfo($username, $infoDict)
+    {
+        $username = $this->decodeString($username);
+        $infoDict = $this->decodeMap($infoDict);
+        return $this->instance->updateSecondaryInfo($username, $infoDict);
+    }
+
+    public function updatePassword($username, $password)
+    {
+        $username = $this->decodeString($username);
+        return $this->instance->updatePassword($username, $password);
     }
 }
 ?>

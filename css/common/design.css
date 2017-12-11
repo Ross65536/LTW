@@ -1,10 +1,29 @@
+
+/*        COLORS       */
+/* green:      #00887a */
+/* skin:       #ffccbc */
+/* white:      #ffffff */
+/* light blue: #d3e3fc */
+/* blue:       #77a6f7 */
+
+
+
+body {
+    font-family: Verdana, Georgia, serif; 
+}
+
+
 *:focus {
     outline: none;
 }
 
+#header h1 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
 #header, footer 
 {
-    background-color: #007fff;
+    background-color: #00887a;
     color: white;
     font-family: 'Lato Light', serif;
 }
@@ -75,3 +94,34 @@ ul li, #display_username {
 {
     border: none;
 }
+
+#register {
+    background-color: #00887a;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+#register:hover {
+    background-color: #ffccbc;    
+}
+
+#login {
+    background-color: #00887a;
+    border-radius: 5px;
+    padding: 5px;   
+}
+
+#login:hover {
+    background-color: #ffccbc;
+    margin-bottom: 10px;
+    }
+
+#about {
+    background-color: #00887a;
+    border-radius: 5px;
+    padding: 5px;  
+}
+
+#about:hover {
+    background-color: #ffccbc;
+    }
