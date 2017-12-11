@@ -1,4 +1,12 @@
 
+<?
+include_once('database/UsersHTMLDecorator.php');
+include_once('database/UsersFacade.php');
+
+$usersDB = new UsersHTMLDecorator(new UsersFacade());
+$username = Session\getHTMLLogin();
+$info = $usersDB->getPhoto($username);
+?>
 
 <body>
 
@@ -8,10 +16,10 @@
         <a href="index.php" id="title">
             <div>
             <img id="logo_image" src="images/logo2.png" alt="logo">
-            </div>  
+            </div>
             <h1> TODO Lists</h1>
         </a>
-        
+
 
         <?php if(Session\isLoggedIn()) { ?>
             <p id="display_username" >Hello <?=Session\getHTMLLogin()?></p>
@@ -23,13 +31,13 @@
                 <li><a id="login" href="login.php">Login</a></li>
             <?php } else { ?>
                 <li><a href="my_lists.php">My Lists</a></li>
-                <li><a href="edit_account.php">Edit Account</a></li>
+                <li><a href="edit_account.php"><img src="<?=$info?>" alt="Profile Picture" /></a></li>
                 <li><a href="PHP/actions/accounts/action_logout.php">Logout</a></li>
             <?php } ?>
         </ul>
 
 
-        <!-- <menu> 
+        <!-- <menu>
             <ul>
                 <li><a href="index.php">??</a></li>
             </ul>

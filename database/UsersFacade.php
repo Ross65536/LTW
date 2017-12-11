@@ -9,9 +9,9 @@ include_once(__DIR__ . '/IUserDB.php');
 class UsersFacade extends ConnectionBase implements IUserDB
 {
     /////////////////////////////////////////////////////////////
-    ////////// public 
+    ////////// public
     /////////////////////////////////////////////////////////////
-    
+
     /**
      * @return true if user with $username and $password exists in database (can login)
      */
@@ -20,7 +20,7 @@ class UsersFacade extends ConnectionBase implements IUserDB
         $column = $this->getUsernameRow($username);
         if($column == null)
             return false;
-        
+
         $found_password = $column['password'];
 
         if($this->verifyPassword($password, $found_password))
@@ -32,12 +32,12 @@ class UsersFacade extends ConnectionBase implements IUserDB
     /**
      * @return true if user with username exists in database
      */
-    public function checkUsernameExists($username) 
+    public function checkUsernameExists($username)
     {
         return $username != "" && $this->getUsernameRow($username) != null;
     }
 
-    public function checkEmailExists($email) 
+    public function checkEmailExists($email)
     {
         return $email != "" && $this->getEmailRow($email) != null;
     }
@@ -45,21 +45,21 @@ class UsersFacade extends ConnectionBase implements IUserDB
     /**
      * @return true if user is succesfully added to database, false if the username or email already exists or some other error happened
      */
-    public function addUser($username, $password, $name, $email)
+    public function addUser($username, $password, $name, $email, $photo_url)
     {
         if($password == "" || $this->checkUsernameExists($username) || $this->checkEmailExists($email) )
             return false;
-        
+
         list($name, $email) = $this->formatNullsForSQL([$name, $email]);
 
         $hashedPassword = $this->hashPassword($password);
 
         $stmt = $this->db->prepare(
-            "INSERT INTO users (username, password, name, email)
-            VALUES (?, ?, ?, ?)"
+            "INSERT INTO users (username, password, name, email, photo_url)
+            VALUES (?, ?, ?, ?, ?)"
         );
 
-        $stmt->execute(array($username, $hashedPassword, $name, $email));
+        $stmt->execute(array($username, $hashedPassword, $name, $email, $photo_url));
         return true;
     }
 
@@ -73,7 +73,7 @@ class UsersFacade extends ConnectionBase implements IUserDB
         $row = $this->getUsernameRow($username);
         if($row == null)
             return [];
-        
+
         //string cast in case sql column is NULL, for empty string
         return [
             "name" => (string) $row["name"],
@@ -83,7 +83,7 @@ class UsersFacade extends ConnectionBase implements IUserDB
 
     /**
      * @param array $infoDict same format as returned by getSecondaryInfo()
-     * 
+     *
      * @return true if sucessfuly updated account
      */
     public function updateSecondaryInfo($username, $infoDict)
@@ -94,9 +94,9 @@ class UsersFacade extends ConnectionBase implements IUserDB
             return false;
 
         list($name, $email) = $this->makeUpdateRow($username, $infoDict);
-        
+
         $stmt = $this->db->prepare(
-            "UPDATE users 
+            "UPDATE users
             SET name = ?, email = ?
             WHERE username = ?"
         );
@@ -111,15 +111,29 @@ class UsersFacade extends ConnectionBase implements IUserDB
             return false;
 
         $hashedPass = $this->hashPassword($password);
-        
+
         $stmt = $this->db->prepare(
-            "UPDATE users 
+            "UPDATE users
             SET password = ?
             WHERE username = ?"
         );
 
         $stmt->execute([$hashedPass, $username]);
         return true;
+    }
+
+    public function updatePhoto($username, $photo_url) {
+      $stmt = $this->db->prepare('UPDATE users SET photo_url =  ? WHERE username = ?');
+      $stmt->execute(array($photo_url, $username));
+
+      return true;
+    }
+
+    public function getPhoto($username) {
+      $stmt = $this->db->prepare('SELECT photo_url FROM users WHERE username = ?');
+      $stmt->execute(array($username));
+
+      return $stmt->fetch();
     }
 
 
@@ -149,14 +163,14 @@ class UsersFacade extends ConnectionBase implements IUserDB
     }
 
     /**
-     * 
+     *
      */
     private function validateAndFormatUpdateInput(&$name, &$email)
     {
         $isEmailEmpty = $email == "";
         $isNameEmpty = $name == "";
 
-        if($isEmailEmpty) 
+        if($isEmailEmpty)
             $email = null; //will insert NULL into SQL database
         if($isNameEmpty)
             $name = null;
@@ -181,11 +195,11 @@ class UsersFacade extends ConnectionBase implements IUserDB
     private function getUsernameRow ($username)
     {
         $stmt = $this->db->prepare(
-            "SELECT * 
-            FROM users 
+            "SELECT *
+            FROM users
             WHERE users.username = ?"
         );
-        
+
         $stmt->execute(array($username));
 
         return $stmt->fetch();
@@ -194,11 +208,11 @@ class UsersFacade extends ConnectionBase implements IUserDB
     private function getEmailRow ($email)
     {
         $stmt = $this->db->prepare(
-            "SELECT * 
-            FROM users 
+            "SELECT *
+            FROM users
             WHERE users.email = ?"
         );
-        
+
         $stmt->execute(array($email));
 
         return $stmt->fetch();

@@ -12,7 +12,7 @@ interface IUserDB
 
     public function checkEmailExists($email);
 
-    public function addUser($username, $password, $name, $email);
+    public function addUser($username, $password, $name, $email, $photo_url);
 
     public function updateSecondaryInfo($username, $infoDict);
 
