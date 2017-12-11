@@ -8,6 +8,7 @@
 
   $userDB = new UsersFacade();
   $listsDB = new ListsFacade();
+
 if (isset($_GET['function']) && $_GET['function'] == 'validUser') {
     if ($_GET['username'] == $_SESSION['username']) {
       echo -1;
