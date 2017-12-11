@@ -14,7 +14,6 @@
 }
 
 
-
 .account form input
 {
     border: 0px;
@@ -66,10 +65,28 @@
     font-weight: bold;
 }
 
+.container img
+{
+    border-radius: 5px;
+}
+
+.centered p
+{
+    font-style: "Comic Sans MS", "Times New Roman", sans-serif;
+    font-size: 110%;
+}
+
 
 /**********************************/
 /*********   Id'd stuff   *********/
 /**********************************/
+
+
+#slogan
+{
+    font-size: 150%;
+}
+
 
 #old_password 
 {
@@ -89,4 +106,23 @@
 {
     font-size: 2rem;
     font-weight: 700;
+}
+
+#text h2
+{
+    font-size: 100%;
+}
+
+#text
+{
+    color: #ffffff;
+    padding: 10px;
+    width: 100%;
+    border-radius: 10px;
+
+    background: #77a6f7; /* For browsers that do not support gradients */
+    background: -webkit-radial-gradient(circle, #77a6f7, #77a6f7, white); /* Safari */
+    background: -o-radial-gradient(circle, #77a6f7, #77a6f7, white); /* Opera 11.6 to 12.0 */
+    background: -moz-radial-gradient(circle, #77a6f7, #77a6f7, white); /* Firefox 3.6 to 15 */
+    background: radial-gradient(circle, #77a6f7, #77a6f7, white); /* Standard syntax */
 }
