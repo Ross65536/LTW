@@ -7,6 +7,7 @@ CREATE TABLE lists (
   date_created INTEGER,
   name VARCHAR,
   creator VARCHAR,
+  list_image VARCHAR,
   FOREIGN KEY (creator) REFERENCES users
 );
 

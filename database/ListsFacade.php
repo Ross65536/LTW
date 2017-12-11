@@ -16,7 +16,7 @@ class ListsFacade extends ConnectionBase implements IListsGetInfo
     *
     */
     public function getListMainInfo($id) {
-      $stmt = $this->db->prepare('SELECT lists.id, lists.date_created, lists.name, lists.creator
+      $stmt = $this->db->prepare('SELECT lists.id, lists.date_created, lists.name, lists.creator, lists.list_image
       FROM lists WHERE lists.id = ?');
 
       $stmt->execute(array($id));
@@ -137,12 +137,12 @@ class ListsFacade extends ConnectionBase implements IListsGetInfo
       $stmt->execute(array($done, $id, $description));
     }
 
-    public function addList($name, $creator, $items, $users) {
-      $stmt = $this->db->prepare('INSERT INTO lists (name, date_created, creator)
-      VALUES (?, ?, ?)');
+    public function addList($name, $creator, $items, $users, $image_url) {
+      $stmt = $this->db->prepare('INSERT INTO lists (name, date_created, creator, list_image)
+      VALUES (?, ?, ?, ?)');
 
       $date = date("Y-m-d");
-      $stmt->execute(array($name, $date, $creator));
+      $stmt->execute(array($name, $date, $creator, $image_url));
       $id = $this->db->lastInsertId('lists');
 
       $stmt = $this->db->prepare('INSERT INTO list_items (list_id, description, done)
