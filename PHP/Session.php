@@ -59,7 +59,10 @@
 
     function getHTMLLogin()
     {
-        return htmlentities($_SESSION['username']);
+        if(! isset($_SESSION['username'])) 
+            return "";
+        else 
+            return htmlentities($_SESSION['username']);
     }
 
     /**

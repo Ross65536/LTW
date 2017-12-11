@@ -33,7 +33,7 @@
             AjaxReply\returnErrors($error_list);
         else
         {
-            $isSuccessfulyRegistered = $usersDB->addUser($username, $password, $name, $email);
+            $isSuccessfulyRegistered = $usersDB->addUser($username, $password, $name, $email, ""); //HERE
 
             if($isSuccessfulyRegistered)
             {   

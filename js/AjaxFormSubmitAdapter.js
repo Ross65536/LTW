@@ -58,8 +58,8 @@ class AjaxFormSubmitAdapter extends AjaxRequestAdapterAbstract
     {
         event.preventDefault();
 
-        const [ajaxActionURI, params] = this.buildActionURI(event);
-        super.sendRequest(ajaxActionURI, params);
+        const ajaxActionURI = this.buildActionURI(event);
+        super.sendRequest(ajaxActionURI);
     }
 
     
@@ -67,8 +67,6 @@ class AjaxFormSubmitAdapter extends AjaxRequestAdapterAbstract
     {
         let form = event.currentTarget;        
         let inputsMap = DOMLib.getFormInputMap(form);
-
-        return [this.actionPath, ]
         return AjaxLib.buildGetURI(this.actionPath, inputsMap);
     }
 
