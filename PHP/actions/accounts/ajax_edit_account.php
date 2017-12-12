@@ -6,6 +6,7 @@
     include_once(__DIR__ . '/../../../database/UsersFacade.php');
     include_once(__DIR__ . '/../../../database/UsersHTMLDecorator.php');
     include_once(__DIR__ . '/../../Forms.php');
+    include_once(__DIR__ . '/../../Regex.php');
     if( ! Forms\checkFormKeyCorrect($_GET['form_key']))
         AjaxReply\returnError("bad_form_key");
     
@@ -39,10 +40,14 @@
         }
 
         $shouldUpdatePassword = $newPassword != "";
-
-        if($shouldUpdatePassword && $newPassword != $confirmNewPassword)
-            array_push($error_list, "password_match_error");
-
+        if($shouldUpdatePassword)
+        {
+            if($newPassword != $confirmNewPassword)
+                array_push($error_list, "password_match_error");
+            else if(! Regex\checkStrongPassword($newPassword))
+                array_push($error_list, "password_match_error");
+        }
+        
         if(count($error_list) == 0) //onlu updates on no errors
         {
             if(!$usersDB->updateSecondaryInfo($username, $updateSecInfo))

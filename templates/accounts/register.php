@@ -16,10 +16,11 @@
             <span> E-mail:  </span>
             <input type="email" name="email">
         </label>
+        <p class="password_regex_tip"> <?=$password_tip?> </p>
         <p id="password_match_error" class="error_message_invisible"> Passwords must match </p>
         <label>
             <span> Password: </span> 
-            <input type="password" name="password" required>
+            <input type="password" name="password" pattern="<?=$password_regex?>" required>
         </label>
         <label>
             <span> Confirm Password:  </span> 

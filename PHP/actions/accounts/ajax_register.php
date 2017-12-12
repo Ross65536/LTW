@@ -6,6 +6,7 @@
     include_once(__DIR__ . '/../../../database/UsersFacade.php');
     include_once(__DIR__ . '/../../../database/UsersHTMLDecorator.php');
     include_once(__DIR__ . '/../../Forms.php');
+    include_once(__DIR__ . '/../../Regex.php');
     if( ! Forms\checkFormKeyCorrect($_GET['form_key']))
         AjaxReply\returnError("bad_form_key");
 
@@ -16,7 +17,9 @@
     $email = $_GET['email'];
 
     if($password === "")
-        AjaxReply\returnErrors(["empty_password_error"]);
+        AjaxReply\returnError("empty_password_error");
+    if(! Regex\checkStrongPassword($password))
+        AjaxReply\returnError("password_doesnt_match_pattern");
         
     if($password === $confirmPassword)
     {

@@ -1,6 +1,7 @@
 <?php
   include_once('PHP/CommonInit.php');
-  
+  include_once('PHP/Regex.php');
+    
   $BrowserTabTitle = "Edit Account";
   include_once('templates/accounts/account_head.php');
   include_once('templates/common/header.php');

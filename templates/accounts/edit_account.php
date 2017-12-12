@@ -13,10 +13,11 @@
             <span> E-mail: </span>
             <input type="email" name="email" value="<?=$email?>" >
         </label>
+        <p class="password_regex_tip"> <?=$password_tip?> </p>
         <p id="password_match_error2" class="error_message_invisible"> Passwords must match </p>
         <label>
             <span> New Password: </span>
-            <input type="password" name="new_password">
+            <input type="password" name="new_password" pattern="<?=$password_regex?>">
         </label>
         <label>
             <span> Confirm New Password: </span>
