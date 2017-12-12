@@ -10,6 +10,9 @@
     if( ! Forms\checkFormKeyCorrect($_GET['form_key']))
         AjaxReply\returnError("bad_form_key");
     
+    include_once(__DIR__ . '/../../Captcha.php');
+    if(! checkCaptchaSucces())
+        AjaxReply\returnError("wrong_captcha");
 
     $username = Session\getLoginUsername();
     $oldPassword = $_GET['old_password'];

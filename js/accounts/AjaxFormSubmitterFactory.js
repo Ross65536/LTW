@@ -68,7 +68,8 @@ class AjaxFormSubmitterFactory
 		AjaxFormSubmitterFactory.disableSubmitOnUnmatchingPassword(inputPassword, inputConfirmPassword, passwordMatchError, submitButton);
 
 		let ajaxActionPath = "PHP/actions/accounts/ajax_register.php";
-		let adapter = new AjaxFormSubmitAdapter(ajaxActionPath, registerErrorMap, AjaxLib.redirectTo.bind(null, "index.php"));
+
+		let adapter = new CaptchaFormAdapter(ajaxActionPath, registerErrorMap, AjaxLib.redirectTo.bind(null, "index.php"));
 		return adapter;
 	}
 
@@ -99,7 +100,7 @@ class AjaxFormSubmitterFactory
 		AjaxFormSubmitterFactory.disableSubmitOnUnmatchingPassword(inputNewPassword, inputConfirmNewPassword, passwordMatchError, submitButton);
 
 		let ajaxActionPath = "PHP/actions/accounts/ajax_edit_account.php";
-		let adapter = new AjaxFormSubmitAdapter(ajaxActionPath, registerErrorMap, showMsgFun);
+		let adapter = new CaptchaFormAdapter(ajaxActionPath, registerErrorMap, showMsgFun);
 		return adapter;
 	}
 

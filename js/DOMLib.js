@@ -3,8 +3,6 @@
 let DOMLib = {}; //namespace
 
 
-
-DOMLib.VALID_FORM_INPUT_TYPES = ['text', 'password', 'email', 'hidden']; //add more here
 /**
  * Return the name => value pairs for each valid input in form
  */
@@ -14,11 +12,7 @@ DOMLib.getFormInputMap = function (formElem)
     let inputs = formElem.getElementsByTagName('input');
     let inputsList = [...inputs];
 
-    let validInputs = inputsList.filter(
-        (input) => DOMLib.VALID_FORM_INPUT_TYPES.includes(input.type)
-    );
-
-    validInputs.forEach(
+    inputsList.forEach(
         (validInput) => inputMap[validInput.name] = validInput.value
     );
 

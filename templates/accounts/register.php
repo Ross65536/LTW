@@ -26,6 +26,7 @@
             <span> Confirm Password:  </span> 
             <input type="password" name="confirm_password" required>
         </label>
+        <?php include_once('templates/form_captcha.php'); ?>
         <input type="submit" value="Register">
     </form>
 </section>

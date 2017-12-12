@@ -29,6 +29,7 @@
             <span> Enter Old Password: </span>
             <input type="password" name="old_password" required>
         </label>
+        <?php include_once('templates/form_captcha.php'); ?>
         <input type="submit" value="Update">
     </form>
 </section>
