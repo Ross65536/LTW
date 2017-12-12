@@ -1,62 +1,26 @@
-
-.account 
-{
-    margin: auto auto;
-    padding: 2rem 3rem;
+.vertical-align {
+  position: absolute;
+  top: 40%;
+  left: 100px;
 }
 
-.account , .account > form, .account > form label
-{
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 1rem;
+#register.vertical-align {
+  margin-top: -90px;
 }
 
-.account > form label input, .account input[type="submit"]
-{
-    margin-top: 1rem;
+.account {
+  width: 300px;
 }
 
-.account form 
-{
-    padding-bottom: 0;
+form {
+  display: flex;
+  flex-direction: column;
 }
 
-.account input[type="submit"]
-{
-    width: 60%;
-    margin-left: auto;
-    margin-right: auto;
-    height: 3rem;
+form * {
+  margin: auto;
 }
 
-.account form input 
-{
-    height: 2rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-}
-
-/**********************************/
-/*********   Id'd stuff   *********/
-/**********************************/
-
-#login 
-{
-    padding-bottom: 3rem;
-}
-
-#register, #edit_account
-{
-    padding-bottom: 3rem;
-}
-
-#edit_account, #register
-{
-    width: 20rem;
-}
-
-#login 
-{
-    width: 16rem;
+form input {
+  padding: 5px;
 }

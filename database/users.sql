@@ -4,5 +4,5 @@ CREATE TABLE users (
   password VARCHAR NOT NULL,
   name VARCHAR,
   email VARCHAR UNIQUE,
-  photo_url VARCHAR
+  photo_url INTEGER
 );

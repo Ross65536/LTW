@@ -1,4 +1,4 @@
-<?php 
+<?php
     if(! isset($BrowserTabTitle) ) #default value
         $BrowserTabTitle = "Todo Lists";
 ?>
@@ -12,3 +12,4 @@
         <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
         <link rel="stylesheet" type="text/css" href="css/common/design.css"/>
         <link rel="stylesheet" type="text/css" href="css/common/layout.css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">

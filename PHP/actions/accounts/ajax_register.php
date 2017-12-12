@@ -17,12 +17,12 @@
 
     if($password === "")
         AjaxReply\returnErrors(["empty_password_error"]);
-        
+
     if($password === $confirmPassword)
     {
         $usersDB = new UsersHTMLDecorator(new UsersFacade());
         $error_list = [];
-        
+
         if($usersDB->checkUsernameExists($username))
             array_push($error_list, "username_exists_error");
 
@@ -33,11 +33,11 @@
             AjaxReply\returnErrors($error_list);
         else
         {
-            $isSuccessfulyRegistered = $usersDB->addUser($username, $password, $name, $email, ""); //HERE
+            $isSuccessfulyRegistered = $usersDB->addUser($username, $password, $name, $email, 0); //HERE
 
             if($isSuccessfulyRegistered)
-            {   
-                Session\logIn($username); 
+            {
+                Session\logIn($username);
                 AjaxReply\returnNoErrors();
             }
             else

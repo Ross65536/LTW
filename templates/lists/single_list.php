@@ -1,5 +1,6 @@
 <h2><?=$main_info['name']?></h2>
 <h4>Created by <?=$creator?> on <?=$main_info['date_created']?></h4>
+<img src="<?=$photo?>" alt="List Photo"/>
 <ul id="items_list">
   <h3>List Items</h3>
   <?if (empty($listItems)) {?>

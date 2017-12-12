@@ -1,5 +1,5 @@
-<form class="edit-form" action="action_save_list.php" method="post">
-  <input type="hidden" name="id" value="<?=$_GET['id']?>"/>
+<form class="edit-form" action="action_save_list.php" method="post" enctype="multipart/form-data">
+  <input type="hidden" name="id" value="<?=$id?>"/>
   <input type="hidden" name="creator" value="<?=$creator?>"/>
   <input type="hidden" name="type" value="edit"/>
   <? if ($creator == 'you') {?>
@@ -9,6 +9,9 @@
   <?} else {?>
     <h2><?=$title?></h2>
     <?}?>
+    <div id="list_photo">
+      <img src="<?=$photo?>" alt="List Image"/>
+    </div>
     <h3>Items List</h3>
   <ul id="items_list">
     <div class="loader">
@@ -43,6 +46,10 @@
   <label>
     New user: <input type="text" id="user"/>
     <button type="button" class="add-btn" onclick="addUser()">Add</button>
+  </label>
+  <label id="photo">
+    <span>Edit Image</span>
+    <input type="file" name="list_image_<?=$id?>"  />
   </label>
   <input type="submit" value="Save"/>
 </form>

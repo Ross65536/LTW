@@ -51,9 +51,10 @@ class UsersHTMLDecorator extends HTMLDecoratorBase implements IUserDB
         return $this->instance->updatePassword($username, $password);
     }
 
-    public function getPhoto($username) {
+    public function getPhoto($username, $size) {
         $username = $this->decodeString($username);
-        return $this->instance->getPhoto($username);
+        $size = $this->decodeString($size);
+        return $this->instance->getPhoto($username, $size);
     }
 }
 ?>
