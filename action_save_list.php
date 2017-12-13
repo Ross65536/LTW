@@ -25,7 +25,7 @@ if (!empty($items)) {
   }
 }
 
-$hasUpdatedImage = $image == "" ? 0 : 1;
+$hasUpdatedImage = $image['tmp_name'] == "" ? 0 : 1;
 
 if ($hasUpdatedImage == 1) {
     upload($image, $id, "lists_photos");
