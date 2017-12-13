@@ -25,10 +25,12 @@ class AjaxFormSubmitterFactory
 	static buildLoginAdapter(form)
 	{
 		let loginError = form.querySelector('#login_error');
+		let captchaError = form.querySelector('#captcha_error');
 
 		let loginErrorMap = 
 		{
-		    "login_error" : DOMLib.getBindShowError(loginError)
+			"login_error" : DOMLib.getBindShowError(loginError),
+			"wrong_captcha": DOMLib.getBindTimedShowError(captchaError, 5000),
 		};
 
 		
@@ -40,7 +42,7 @@ class AjaxFormSubmitterFactory
 		
 		
 		let ajaxActionPath = "PHP/actions/accounts/ajax_login.php";
-		let adapter = new AjaxFormSubmitAdapter(ajaxActionPath, loginErrorMap, AjaxLib.redirectTo.bind(null, "index.php"));
+		let adapter = new CaptchaFormAdapter(ajaxActionPath, loginErrorMap, AjaxLib.redirectTo.bind(null, "index.php"));
 		return adapter;
 	}
 

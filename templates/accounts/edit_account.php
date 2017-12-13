@@ -30,7 +30,7 @@
             <input type="password" name="old_password" required>
         </label>
         <?php include_once('templates/form_captcha.php'); ?>
-        <p id="captcha_error" class="error_message_invisible"> Incorrect Captcha, please try again. </p>
+        <p id="captcha_error" class="error_message_invisible"> Please Solve the Captcha. </p>
         <p id="successfuly_edited_account_message" class="success_message_invisible"> Account Edited Successfuly </p>
         <input type="submit" value="Update">
     </form>

@@ -4,7 +4,10 @@
     include_once(__DIR__ . '/../AjaxReply.php');
     include_once(__DIR__ . '/../../../database/UsersFacade.php');
     include_once(__DIR__ . '/../../../database/UsersHTMLDecorator.php');
-    
+
+    include_once(__DIR__ . '/../../Captcha.php');
+    if(! checkCaptchaSucces())
+        AjaxReply\returnError("wrong_captcha");
 
     $username = $_GET['username'];
     $password = $_GET['password'];
