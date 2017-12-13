@@ -137,12 +137,33 @@ class ListsFacade extends ConnectionBase implements IListsGetInfo
       $stmt->execute(array($done, $id, $description));
     }
 
-    public function addList($name, $creator, $items, $users, $image_url) {
+
+    public function updatePhoto($id) {
+      $stmt = $this->db->prepare('UPDATE lists SET list_image = 1 WHERE id = ?');
+      $stmt->execute(array($id));
+
+      return true;
+    }
+
+    public function getPhoto($id, $size) {
+      $stmt = $this->db->prepare('SELECT list_image FROM lists WHERE id = ?');
+      $stmt->execute(array($id));
+
+
+
+      if ($stmt->fetch()['list_image'] == 0)
+       return "images/lists_photos/" . $size . "/default.jpg";
+      else {
+        return "images/lists_photos/" . $size . "/" . $id . ".jpg";
+      }
+    }
+
+    public function addList($name, $creator, $items, $users, $photo) {
       $stmt = $this->db->prepare('INSERT INTO lists (name, date_created, creator, list_image)
       VALUES (?, ?, ?, ?)');
 
       $date = date("Y-m-d");
-      $stmt->execute(array($name, $date, $creator, $image_url));
+      $stmt->execute(array($name, $date, $creator, $photo));
       $id = $this->db->lastInsertId('lists');
 
       $stmt = $this->db->prepare('INSERT INTO list_items (list_id, description, done)
@@ -162,10 +183,10 @@ class ListsFacade extends ConnectionBase implements IListsGetInfo
       return $id;
     }
 
-    public function updateList($id, $name, $items, $users) {
+    public function updateList($id, $name, $items, $users, $photo) {
       if ($name != '') {
-        $stmt = $this->db->prepare('UPDATE lists SET name = ? WHERE id = ?');
-        $stmt->execute(array($name, $id));
+        $stmt = $this->db->prepare('UPDATE lists SET name = ?, list_image = ? WHERE id = ?');
+        $stmt->execute(array($name, $photo, $id));
       }
 
       $stmt = $this->db->prepare('DELETE FROM list_items WHERE list_id = ?');

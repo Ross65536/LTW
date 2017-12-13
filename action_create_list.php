@@ -24,7 +24,7 @@ if (!empty($items)) {
 }
 
 try {
-  $id = $listDB->addList($name, $creator, $final_items, $users);
+  $id = $listDB->addList($name, $creator, $final_items, $users, 0);
   header("Location: single_list.php?id=$id");
 } catch (PDOException $e) {
   die($e->getMessage());

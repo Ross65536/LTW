@@ -1,6 +1,3 @@
-<link rel="stylesheet" type="text/css" href="css/about/design.css"/>
-<link rel="stylesheet" type="text/css" href="css/about/layout.css"/>
-
 <img class="feup_logo" src="images/feup_logo.gif"/>
 
 <p class="intro">

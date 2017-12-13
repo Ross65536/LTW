@@ -1,62 +1,32 @@
+/* Accounts CSS */
 
-.account 
-{
-    margin: auto auto;
-    padding: 2rem 3rem;
+.vertical-align {
+  position: absolute;
+  top: 40%;
+  left: 100px;
 }
 
-.account , .account > form, .account > form label
-{
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 1rem;
+#register.vertical-align, #edit_account.vertical-align {
+  margin-top: -90px;
 }
 
-.account > form label input, .account input[type="submit"]
-{
-    margin-top: 1rem;
+.account {
+  width: 300px;
 }
 
-.account form 
-{
-    padding-bottom: 0;
+.account *:not(h1) {
+  margin-top: 0.5em;
 }
 
-.account input[type="submit"]
-{
-    width: 60%;
-    margin-left: auto;
-    margin-right: auto;
-    height: 3rem;
+form {
+  display: flex;
+  flex-direction: column;
 }
 
-.account form input 
-{
-    height: 2rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
+form * {
+  margin: auto;
 }
 
-/**********************************/
-/*********   Id'd stuff   *********/
-/**********************************/
-
-#login 
-{
-    padding-bottom: 3rem;
-}
-
-#register, #edit_account
-{
-    padding-bottom: 3rem;
-}
-
-#edit_account, #register
-{
-    width: 20rem;
-}
-
-#login 
-{
-    width: 16rem;
+form input {
+  padding: 5px;
 }

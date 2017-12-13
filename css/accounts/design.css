@@ -1,103 +1,25 @@
+/* Accounts CSS */
 
-.account
-{
-    background-color: rgb(238, 136, 89);
-    border-radius: 10px;
-    font-family: sans-serif;
+#login-page {
+  background-image: url("../../images/login.jpg");
+  background-size: cover;
 }
 
-.account h1 
-{
-    font-size: 2.5rem;
-    color: white;
-    font-weight: 900;
+#register-page {
+  background-image: url("../../images/register.jpg");
+  background-size: cover;
 }
 
-
-
-.account form input
-{
-    border: 0px;
-    background-color: white;
-    border-radius: 3px;
+.account {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 2em;
+  text-align: center;
+  border-radius: 10px;
 }
 
-.account form span 
-{
-    color: white;
+#login:hover {
+  color: black;
 }
-
-.account input[type="submit"], .account form span
-{
-    font-weight: 600;
-    font-size: 1.2rem;
-}
-
-.account input[type="submit"]
-{
-    transition: background-color 0.3s;
-}
-
-.account input[type="submit"]:hover
-{
-    background-color: #DDD;
-}
-
-.account input[type="submit"]:active
-{
-    background-color: #AAA;
-    box-shadow: 0 0 0.5rem #444;
-}
-
-/* instructions */
-.account h3		
-{		
-    text-align: justify;		
-    color: white;		
-    font-size: 1.2rem;		
-    margin-bottom: 2rem;		
-}
-
-.error_message, .success_message
-{
-    padding: 1rem 0.5rem ;
-    border-radius: 5px;
-    font-weight: bold;
-}
-
-.error_message
-{
-    color: rgb(255, 0, 0);
-    background-color: rgb(250, 195, 195);   
-}
-
-.success_message
-{
-    color: green;
-    background-color: #98FB98;      
-}
-
-
-/**********************************/
-/*********   Id'd stuff   *********/
-/**********************************/
-
-#old_password 
-{
-    margin-top: 4rem;
-    margin-bottom: 1rem;
-}
-
-#user_p
-{
-    color: white;
-    font-size: 3rem;
-    font-weight: 900;
-    text-align: center;
-}
-
-#edit_account h1 
-{
-    font-size: 2rem;
-    font-weight: 700;
+#register:hover {
+  color: black;
 }

@@ -122,18 +122,22 @@ class UsersFacade extends ConnectionBase implements IUserDB
         return true;
     }
 
-    public function updatePhoto($username, $photo_url) {
-      $stmt = $this->db->prepare('UPDATE users SET photo_url =  ? WHERE username = ?');
-      $stmt->execute(array($photo_url, $username));
+    public function updatePhoto($username) {
+      $stmt = $this->db->prepare('UPDATE users SET photo_url = 1 WHERE username = ?');
+      $stmt->execute(array($username));
 
       return true;
     }
 
-    public function getPhoto($username) {
+    public function getPhoto($username, $size) {
       $stmt = $this->db->prepare('SELECT photo_url FROM users WHERE username = ?');
       $stmt->execute(array($username));
 
-      return $stmt->fetch();
+      if ($stmt->fetch()['photo_url'] == 0)
+       return "images/users_photos/" . $size . "/default.jpg";
+      else {
+        return "images/users_photos/" . $size . "/" . $username . ".jpg";
+      }
     }
 
 

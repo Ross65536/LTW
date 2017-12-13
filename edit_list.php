@@ -16,10 +16,12 @@
     echo '<script src="js/lists/edit_list.js"></script>';
     echo '<script src="js/lists/update_elements.js"></script>';
 
-    $title = $listDB->getListName($_GET['id']);
-    $creator = $listDB->displayCreator($_GET['id']);
-    $listItems = $listDB->getListItems($_GET['id']);
-    $listUsers = $listDB->getListUsers($_GET['id']);
+    $id = $_GET['id'];
+    $title = $listDB->getListName($id);
+    $creator = $listDB->displayCreator($id);
+    $listItems = $listDB->getListItems($id);
+    $listUsers = $listDB->getListUsers($id);
+    $photo = $listDB->getPhoto($id, "thumbs_small");
     include_once('templates/lists/edit_list.php');
   }
 
