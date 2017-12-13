@@ -12,7 +12,7 @@ $photo = $usersDB->getPhoto($username, "thumbs_tiny");
 
 <div id="container">
 
-    <header id="header">
+    <header id="header" >
       <div class="wrapper">
         <a href="index.php" id="title" class="inner">
             <div id="logo">
@@ -24,8 +24,12 @@ $photo = $usersDB->getPhoto($username, "thumbs_tiny");
 
             <?php  if(Session\isLoggedIn()) { ?>
               <div class="dropdown">
-                Hello <?=Session\getHTMLLogin()?>
-                <a href="upload_user_photo.php"><img id="profile_pic" src="<?=$photo?>"/></a>
+                <div class="container">
+                  <img id="profile_pic" src="<?=$photo?>"/>
+                  <div class="middle">
+                    <a href="upload_user_photo.php"><div class="text">Change Photo</div></a>
+                  </div>
+                </div>
                 <div class="dropdown-content">
                   <p><a href="my_lists.php">My Lists</a></p>
                   <p><a href="edit_account.php">Edit Account</a></p>

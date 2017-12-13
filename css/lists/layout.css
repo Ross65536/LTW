@@ -1,16 +1,48 @@
+/* Lists CSS */
+
 .delete-button {
-    float: right;
-    margin-top: -13px;
     font-size: 11px;
-    display: none;
 }
 
+.error_message {
+    padding: 1rem 0.5rem ;
+}
 
-/* devia tar associado a id ou classe **/
+.loader {
+  display:none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -50px;
+  margin-left: -50px;
+  width: 100px;
+  height: 100px;
+}
+
+ul h3 {
+  padding-top: -1em;
+  padding-bottom: 1em;
+}
+
 li:hover .delete-button {
     display: block;
 }
 
-.items_list ul li {
-    margin: 1em auto;
+#top_header {
+  width: 85%;
+  display: inline-block;
+}
+
+#main_info,
+#image {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#main_info {
+  text-align: left;
+}
+
+#image img {
+  display: block;
 }

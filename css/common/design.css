@@ -118,8 +118,8 @@ ul li {
   height: 100vh;
 }
 
-.jumbotron {
-  font-size: 27px;
+.def-size {
+  font-size: 21px;
 }
 
 .dark {
@@ -159,4 +159,41 @@ ul li {
 
 .blurb span {
   color: #151515;
+}
+
+input:hover{
+  letter-spacing: 1px;
+}
+
+::-webkit-input-placeholder {
+  color: light-gray;
+}
+
+.rounded-img {
+  border-radius: 50%;
+}
+
+
+.container:hover .image {
+  opacity: 0.3;
+}
+
+.container:hover .middle {
+  opacity: 1;
+}
+
+.text {
+  background-color: white;
+  border-radius: 5px;
+  font-size: 16px;
+  padding: 8px 15px;
+  color: black !important;
+  cursor: pointer;
+  text-align: center;
+}
+
+.one-edge-shadow {
+	-webkit-box-shadow: 0 8px 6px -6px black;
+	   -moz-box-shadow: 0 8px 6px -6px black;
+	        box-shadow: 0 8px 6px -6px black;
 }

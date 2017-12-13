@@ -102,6 +102,7 @@ footer {
 }
 
 .blurbs span.fa {
+	margin-top: 30px;
   margin-bottom: 30px;
 }
 
@@ -125,6 +126,15 @@ footer {
   width: auto;
 }
 
+.blurbs-2 .blurb{
+  float: left;
+  width: 50%;
+}
+
+.btn {
+	margin: 1em auto !important;
+}
+
 input {
   transition: letter-spacing 0.2s ease;
   padding: 10px;
@@ -133,10 +143,26 @@ input {
   font-size: 20px;
 }
 
-input:hover{
-  letter-spacing: 1px;
+.centered {
+  padding-top: 100px;
+  text-align: center;
 }
 
-::-webkit-input-placeholder {
-  color: black;
+.margined {
+  margin: 1em;
+}
+
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%)
+}
+
+.off-edges {
+  width: 90%;
+  margin: auto;
 }

@@ -1,5 +1,5 @@
 <div id="login-page" class="full-height">
-  <div id="login" class="account vertical-align">
+  <div id="login" class="account vertical-align one-edge-shadow">
       <form action="#">
           <h1>Login</h1>
           <label>

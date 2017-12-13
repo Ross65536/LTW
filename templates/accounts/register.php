@@ -1,5 +1,5 @@
 <div id="register-page" class="full-height">
-  <section id="register" class="account vertical-align">
+  <section id="register" class="account vertical-align one-edge-shadow">
       <h1>Register</h1>
       <form action="#">
           <?php include_once('templates/form_key.php'); ?>

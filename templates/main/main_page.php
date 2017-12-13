@@ -1,5 +1,5 @@
 <div id="main-content">
-  <div id="landing" class="full-height jumbotron light">
+  <div id="landing" class="full-height jumbotron light def-size">
       <h1> Organize your life. </h1>
       <div>
           <h2> A simple, straightforward way to organize your tasks. </h2>
@@ -8,7 +8,7 @@
       <div class="inline-buttons">
         <? if(Session\isLoggedIn()) { ?>
               <a href="my_lists.php"><button class="btn">My Lists</button></a>
-              <a href="logout.php"><button class="btn">Logout</button></a>
+              <a href="PHP/actions/accounts/action_logout.php"><button class="btn">Logout</button></a>
          <? } else {?>
         <a href="login.php"><button class="btn">Login</button></a>
         <a href="register.php"><button class="btn">Register</button></a><br />

@@ -1,15 +1,21 @@
+/* Accounts CSS */
+
 .vertical-align {
   position: absolute;
   top: 40%;
   left: 100px;
 }
 
-#register.vertical-align {
+#register.vertical-align, #edit_account.vertical-align {
   margin-top: -90px;
 }
 
 .account {
   width: 300px;
+}
+
+.account *:not(h1) {
+  margin-top: 0.5em;
 }
 
 form {
