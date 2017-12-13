@@ -1,4 +1,4 @@
-<div id="register-page" class="full-height">
+<div id="register-page" class="full-height parallax">
   <section id="register" class="account vertical-align one-edge-shadow">
       <h1>Register</h1>
       <form action="#">

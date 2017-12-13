@@ -1,4 +1,4 @@
-<div class="def-size centered">
+<div id="my_lists" class="full-height def-size centered parallax">
   <div class="off-edges white-back">
     <h2>My lists:</h2>
     <?

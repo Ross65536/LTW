@@ -10,6 +10,11 @@
   background-size: cover;
 }
 
+#upload {
+  background-image: url("../../images/user_upload.jpg");
+  background-size: cover;
+}
+
 .account {
   background-color: rgba(255, 255, 255, 0.8);
   padding: 2em;
@@ -22,4 +27,8 @@
 }
 #register:hover {
   color: black;
+}
+
+#edit_account h3 {
+  font-size: 30px;
 }

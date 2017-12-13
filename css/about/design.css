@@ -1,11 +1,13 @@
-p.intro {
+#about_div {
+  background-image: url("../../images/about.jpg");
+  background-size: cover;
+}
 
-    font-size: 10px;
+img {
+  border-radius: 5px;
+}
 
-};
-
-.feup_logo {
-
-  background-color: red;
-
+ul.authors {
+  border-left: dashed 2px black;
+  border-right: dashed 2px black;
 }

@@ -27,7 +27,7 @@ $photo = $usersDB->getPhoto($username, "thumbs_tiny");
                 <div class="container">
                   <img id="profile_pic" src="<?=$photo?>"/>
                   <div class="middle">
-                    <a href="upload_user_photo.php"><div class="text">Change Photo</div></a>
+                    <a href="upload_user_photo.php"><div class="text"><span class="default" style="font-size: 15px">Change Photo</span></div></a>
                   </div>
                 </div>
                 <div class="dropdown-content">

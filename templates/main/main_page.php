@@ -19,7 +19,7 @@
 
   <? if(!Session\isLoggedIn()) { ?>
   <div id="info_steps" class="blurbs blurbs-4 dark">
-    <h1>Easy Peasy</h1>
+    <h1 class="dash-bot">Easy Peasy</h1>
       <div class="blurb">
         <span class="fa fa-user fa-5x"></span>
         <h3> Create account</h3>
