@@ -34,8 +34,8 @@ class AjaxFormSubmitterFactory
 		};
 
 		
-        let inputUsername = form.querySelector('input[name="username"]');
-        let inputPassword = form.querySelector('input[name="password"]');
+        let inputUsername = form.querySelector('#username_input');
+        let inputPassword = form.querySelector('#password_input');
 		
         AjaxFormSubmitterFactory.addHideErrorHandler(inputUsername, loginError);
         AjaxFormSubmitterFactory.addHideErrorHandler(inputPassword, loginError);
@@ -63,11 +63,11 @@ class AjaxFormSubmitterFactory
 			"wrong_captcha": DOMLib.getBindTimedShowError(captchaError),
 		};
 		
-		let inputUsername = form.querySelector('input[name="username"]');
-        let inputEmail = form.querySelector('input[name="email"]');
-        let inputPassword = form.querySelector('input[name="password"]');
-        let inputConfirmPassword = form.querySelector('input[name="confirm_password"]');
-		let submitButton = form.querySelector('input[type="submit"]');
+		let inputUsername = form.querySelector('#username_input');
+        let inputEmail = form.querySelector('#email_input');
+        let inputPassword = form.querySelector('#password_input');
+        let inputConfirmPassword = form.querySelector('#confirm_password_input');
+		let submitButton = form.querySelector('#submit_button_id');
 
 		AjaxFormSubmitterFactory.addHideErrorHandler(inputUsername, usernameError);
 		AjaxFormSubmitterFactory.addHideErrorHandler(inputEmail, emailError);
@@ -100,11 +100,11 @@ class AjaxFormSubmitterFactory
 		let showMsgFun = DOMLib.getBindTimedShowSuccess(editSuccess);
 
 		
-		let inputEmail = form.querySelector('input[name="email"]');
-        let inputOldPassword = form.querySelector('input[name="old_password"]');		
-        let inputNewPassword = form.querySelector('input[name="new_password"]');
-		let inputConfirmNewPassword = form.querySelector('input[name="confirm_new_password"]');
-		let submitButton = form.querySelector('input[type="submit"]');
+		let inputEmail = form.querySelector('#email_input');
+        let inputOldPassword = form.querySelector('#old_password_input');		
+        let inputNewPassword = form.querySelector('#new_password_input');
+		let inputConfirmNewPassword = form.querySelector('#confirm_new_password_input');
+		let submitButton = form.querySelector('#submit_button_id');
 
 		AjaxFormSubmitterFactory.addHideErrorHandler(inputEmail, emailError);
 		AjaxFormSubmitterFactory.addHideErrorHandler(inputOldPassword, wrongPasswordError);	

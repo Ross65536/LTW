@@ -39,11 +39,12 @@
         {
             if(! Email\checkValidFormat($email))
                 array_push($error_list, "email_string_not_an_email");
-            else if($usersDB->checkEmailExists($email))
+            if($usersDB->checkEmailExists($email))
                 array_push($error_list, "email_exists_error");
-            else if(! Email\checkValid($email))
+            if(! Email\checkValid($email))
                 array_push($error_list, "email_doesnt_exist");
-            else
+            
+            if(count($error_list) == 0) //only here
                 $updateSecInfo["email"] = $email;
         }
 
