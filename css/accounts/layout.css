@@ -40,3 +40,8 @@ form input {
   display: flex;
   flex-direction: column;
 }
+
+.invisible_captcha 
+{
+  display: none;
+}

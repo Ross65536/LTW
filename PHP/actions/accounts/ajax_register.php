@@ -11,8 +11,10 @@
 
     include_once(__DIR__ . '/../../Regex.php');
     include_once(__DIR__ . '/../../Captcha.php');
-    if(! checkCaptchaSucces())
-        AjaxReply\returnError("wrong_captcha");
+    if(! checkClientIPLogged())
+        AjaxReply\returnError("not_valid_site_use");
+    if(! checkNumberedCaptchaSuccess())
+        AjaxReply\returnError("wrong_captcha"); 
     include_once(__DIR__ . '/../../Email.php');
 
     $username = $_GET['username'];
@@ -26,10 +28,10 @@
     if(! Regex\checkStrongPassword($password))
         AjaxReply\returnError("password_doesnt_match_pattern");
 
+    $error_list = [];
     if($password === $confirmPassword)
     {
         $usersDB = new UsersHTMLDecorator(new UsersFacade());
-        $error_list = [];
 
         if($usersDB->checkUsernameExists($username))
             array_push($error_list, "username_exists_error");
@@ -44,21 +46,24 @@
                 array_push($error_list, "email_doesnt_exist");
         }
 
-        if(count($error_list) > 0)
-            AjaxReply\returnErrors($error_list);
-        else
+        if(count($error_list) == 0)
         {
             $isSuccessfulyRegistered = $usersDB->addUser($username, $password, $name, $email, 0); //HERE
-
             if($isSuccessfulyRegistered)
-            {
                 Session\logIn($username);
-                AjaxReply\returnNoErrors();
-            }
             else
-                AjaxReply\returnErrors(["database_error"]);
+                array_push($error_list, "database_error");
         }
     }
     else
-        AjaxReply\returnErrors(["password_match_error"]);
+        $error_list = ["password_match_error"];
+
+    if(count($error_list) > 0)
+    {
+        incrementCaptchaAttempts();
+        if(shouldDisplayCaptcha())
+            array_push($error_list, "should_display_captcha");
+    }
+
+    AjaxReply\returnErrors($error_list);
 ?>

@@ -39,7 +39,7 @@ class AjaxFormSubmitterFactory
 		
         AjaxFormSubmitterFactory.addHideErrorHandler(inputUsername, loginError);
         AjaxFormSubmitterFactory.addHideErrorHandler(inputPassword, loginError);
-		
+		AjaxFormSubmitterFactory.addSmartCaptcha(loginErrorMap);
 		
 		let ajaxActionPath = "PHP/actions/accounts/ajax_login.php";
 		let adapter = new CaptchaFormAdapter(ajaxActionPath, loginErrorMap, AjaxLib.redirectTo.bind(null, "index.php"));
@@ -73,11 +73,17 @@ class AjaxFormSubmitterFactory
 		AjaxFormSubmitterFactory.addHideErrorHandler(inputEmail, emailError);
 		AjaxFormSubmitterFactory.addHideErrorHandler(inputEmail, emailExistenceError);
 		AjaxFormSubmitterFactory.disableSubmitOnUnmatchingPassword(inputPassword, inputConfirmPassword, passwordMatchError, submitButton);
-
+		AjaxFormSubmitterFactory.addSmartCaptcha(registerErrorMap);
+		
 		let ajaxActionPath = "PHP/actions/accounts/ajax_register.php";
-
 		let adapter = new CaptchaFormAdapter(ajaxActionPath, registerErrorMap, AjaxLib.redirectTo.bind(null, "index.php"));
 		return adapter;
+	}
+
+	static addSmartCaptcha(handlerMap)
+	{
+		let captcha = form.querySelector('#google_recaptcha');
+		handlerMap["should_display_captcha"] = DOMLib.getBindShowCaptcha(captcha);
 	}
 
 	static buildEditInfoAdapter(form)
@@ -89,16 +95,21 @@ class AjaxFormSubmitterFactory
 		let captchaError = form.querySelector('#captcha_error');
 		let emailExistenceError = form.querySelector('#email_doesnt_exist_error');
 		
-		let registerErrorMap = 
+		
+		let editInfoErrorMap = 
 		{
 			"email_exists_error" : DOMLib.getBindShowError(emailError),
 			"email_doesnt_exist" : DOMLib.getBindShowError(emailExistenceError),
 			"wrong_password_error" : DOMLib.getBindShowError(wrongPasswordError),
 			"password_match_error" : DOMLib.getBindShowError(passwordMatchError),
 			"wrong_captcha": DOMLib.getBindTimedShowError(captchaError),
+			
 		};
-		let showMsgFun = DOMLib.getBindTimedShowSuccess(editSuccess);
-
+		let showMsgFun = () => {
+			DOMLib.getBindTimedShowSuccess(editSuccess)();//call immediatly
+			let captcha = form.querySelector('#google_recaptcha');
+			DOMLib.getBindHideCaptcha(captcha)();
+		}
 		
 		let inputEmail = form.querySelector('#email_input');
         let inputOldPassword = form.querySelector('#old_password_input');		
@@ -109,11 +120,12 @@ class AjaxFormSubmitterFactory
 		AjaxFormSubmitterFactory.addHideErrorHandler(inputEmail, emailError);
 		AjaxFormSubmitterFactory.addHideErrorHandler(inputOldPassword, wrongPasswordError);	
 		AjaxFormSubmitterFactory.addHideErrorHandler(inputEmail, emailExistenceError);
-			
 		AjaxFormSubmitterFactory.disableSubmitOnUnmatchingPassword(inputNewPassword, inputConfirmNewPassword, passwordMatchError, submitButton);
+		AjaxFormSubmitterFactory.addSmartCaptcha(editInfoErrorMap);
 
 		let ajaxActionPath = "PHP/actions/accounts/ajax_edit_account.php";
-		let adapter = new CaptchaFormAdapter(ajaxActionPath, registerErrorMap, showMsgFun);
+
+		let adapter = new CaptchaFormAdapter(ajaxActionPath, editInfoErrorMap, showMsgFun);
 		return adapter;
 	}
 
