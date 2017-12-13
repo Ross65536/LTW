@@ -1,5 +1,8 @@
 <?php
     require __DIR__ . '/../vendor/autoload.php';
+    require_once __DIR__ . '/../database/IPattemptsFacade.php';
+
+    $NUM_ATTEMPTS = 2;
 
     function checkCaptchaSucces($bUseGET = true)
     {
@@ -18,6 +21,21 @@
             return true;
         else 
             return false;
+    }
+
+    function checkShouldDisplayHTMLCaptcha()
+    {
+        global $NUM_ATTEMPTS; 
+
+        $ipAttemptsDB = new IPattemptsFacade();
+        $clientIP = $_SERVER['REMOTE_ADDR'];
+        $ipAttemptsDB->tryAddingIP($clientIP); //insert 0 attempts if ip new
+
+        $numAttempts = $ipAttemptsDB->getNumAttempts($clientIP);
+
+        $bShouldDisplay = $numAttempts > $NUM_ATTEMPTS;
+
+        return $bShouldDisplay;
     }
 
 ?>
