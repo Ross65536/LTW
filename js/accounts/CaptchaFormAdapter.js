@@ -10,4 +10,12 @@ class CaptchaFormAdapter extends AjaxFormSubmitAdapter
         let newGETURL = `${formURL}&${RECAPTCHA_FORM_NAME}=${captcha}`;
         return newGETURL;
     }
+
+    handleJSONResponseTemplate(responseErrorList)
+    {
+        if(responseErrorList.length != 0) //some errors
+            grecaptcha.reset();
+        
+        return super.handleJSONResponseTemplate(responseErrorList);
+    }
 }
