@@ -159,6 +159,7 @@ class ListsFacade extends ConnectionBase implements IListsGetInfo
     }
 
     public function addList($name, $creator, $items, $users, $photo) {
+      $name = $name == "" ? "Default" : $name;
       $stmt = $this->db->prepare('INSERT INTO lists (name, date_created, creator, list_image)
       VALUES (?, ?, ?, ?)');
 

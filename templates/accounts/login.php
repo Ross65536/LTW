@@ -1,4 +1,4 @@
-<div id="login-page" class="full-height">
+<div id="login-page" class="full-height parallax">
   <div id="login" class="account vertical-align one-edge-shadow">
       <form action="#">
           <h1>Login</h1>

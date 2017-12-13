@@ -1,17 +1,12 @@
 /* Accounts CSS */
 
-.vertical-align {
-  position: absolute;
-  top: 40%;
-  left: 100px;
-}
-
 #register.vertical-align, #edit_account.vertical-align {
   margin-top: -90px;
 }
 
 .account {
   width: 300px;
+  left: 100px;
 }
 
 .account *:not(h1) {
@@ -29,4 +24,19 @@ form * {
 
 form input {
   padding: 5px;
+}
+
+#upload {
+  padding-top: 4em;
+}
+
+#upload > div.centered {
+  width: 80%;
+  left: 0;
+  margin: auto;
+}
+
+#photo {
+  display: flex;
+  flex-direction: column;
 }

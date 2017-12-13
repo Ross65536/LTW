@@ -1,7 +1,6 @@
-<div id="register-page" class="full-height">
+<div id="register-page" class="full-height parallax">
 	<section id="edit_account" class="account vertical-align one-edge-shadow" >
 		<p id="user_p"> User: <?= "$username" ?></p>
-		<h1>Edit Account Information:</h1>
 		<h3>Edit the fields you want to change and enter your password for confirmation. </h3>
 		<form action="#">
 			<?php include_once('templates/form_key.php'); ?>

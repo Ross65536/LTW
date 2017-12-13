@@ -1,4 +1,4 @@
-<div class="def-size centered">
+<div id="single_list" class="full-height def-size centered parallax">
   <div id="top_header">
     <div id="main_info" class="one-edge-shadow">
       <p><?=$main_info['name']?></p>
@@ -11,38 +11,46 @@
   <div class="off-edges">
     <div class="blurbs blurbs-2">
         <div class="blurb">
-          <ul id="items_list" class="list one-edge-shadow">
-            <h3>List Items</h3>
-            <?if (empty($listItems)) {?>
-              <li>
-                No items were added here yet.
-              </li>
-            <?} else
-            foreach ($listItems as $item) {?>
-              <li <?if ($item['done'] == 1) {
-                echo 'style="text-decoration: line-through"';
-              }$name = str_replace(' ', '_', $item['description']);?>>
-                <input type="checkbox" name="<?=$name?>" <?= ($item['done'] == 1 ? 'checked' : '');?>disabled>
-                <span class="item"><?=$item['description']?></span>
-                <input type="hidden" value="<?=$item['description']?>" name="items[]"/>
-              </li>
-            <?}?>
-          </ul>
+          <div class="list one-edge-shadow">
+            <h3 class="dash-bot">List Items</h3>
+            <ul id="items_list">
+              <?if (empty($listItems)) {?>
+                <li>
+                  <span class="default">
+                    No items were added here yet.
+                  </span>
+                </li>
+                <?} else
+                foreach ($listItems as $item) {?>
+                  <li <?if ($item['done'] == 1) {
+                    echo 'style="text-decoration: line-through"';
+                  }$name = str_replace(' ', '_', $item['description']);?>>
+                  <input type="checkbox" name="<?=$name?>" <?= ($item['done'] == 1 ? 'checked' : '');?>disabled>
+                  <span class="item default"><?=$item['description']?></span>
+                  <input type="hidden" value="<?=$item['description']?>" name="items[]"/>
+                </li>
+                <?}?>
+              </ul>
+          </div>
       </div>
       <div class="blurb">
-        <ul id="users_list" class="list one-edge-shadow">
-          <h3>Users</h3>
-          <?if (empty($listUsers)) {?>
-            <li>
-              No users were added here yet.
-            </li>
-          <?}foreach ($listUsers as $user) {?>
-            <li>
-              <span class="username"><?=$user['username']?></span>
-              <input type="hidden" value="<?=$user['username']?>" name="users[]"/>
-            </li>
-          <?}?>
-        </ul>
+        <div class="list one-edge-shadow">
+          <h3 class="dash-bot">Users</h3>
+          <ul id="users_list">
+            <?if (empty($listUsers)) {?>
+              <li>
+                <span class="default">
+                  No users were added here yet.
+                </span>
+              </li>
+              <?}foreach ($listUsers as $user) {?>
+                <li>
+                  <span class="username default"><?=$user['username']?></span>
+                  <input type="hidden" value="<?=$user['username']?>" name="users[]"/>
+                </li>
+                <?}?>
+              </ul>
+        </div>
       </div>
     </div>
   </div>

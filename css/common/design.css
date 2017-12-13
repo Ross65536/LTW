@@ -9,10 +9,15 @@
 
 /*********** BODY ********/
 
-body {
-    font-family: Verdana, Georgia, serif;
+p, span.default, input, button {
+  font-family: Comfortaa, sans-serif;
+  font-size: 20px;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Amatic SC', serif;
+  font-size: 70px;
+}
 
 body > * a {
     text-decoration: none;
@@ -27,8 +32,20 @@ body {
     border-radius: 10px;
 }
 
-*:focus {
-    outline: none;
+input[type=checkbox] {
+  zoom:1.5;
+  transform:scale(1.5);
+  -ms-transform:scale(1.5);
+  -webkit-transform:scale(1.5);
+  -o-transform:scale(1.5);
+  -moz-transform:scale(1.5);
+  transform-origin:0 0;
+  -ms-transform-origin:0 0;
+  -webkit-transform-origin:0 0;
+  -o-transform-origin:0 0;
+  -moz-transform-origin:0 0;
+  -webkit-transform-origin:0 0;
+  vertical-align: text-bottom;
 }
 
 
@@ -43,19 +60,27 @@ body {
   font-family: 'Lato Light', serif;
 }
 
-#logo {
-  font-size: 30px;
-}
-
 footer {
   text-align: center;
+  font-family: Comfortaa, sans-serif;
 }
 
 /******* ACCOUNT MENU ***********/
 
+#title {
+  border: dotted 2px white;
+  border-bottom: none;
+}
+
+#site_name {
+  font-family: 'Amatic SC', sans-serif;
+  font-size: 50px;
+  letter-spacing: 1px;
+  vertical-align: bottom;
+}
+
 ul li {
     list-style: none;
-    font-family: Ubuntu, sans-serif;
 }
 
 #logged-out li, footer a {
@@ -76,18 +101,6 @@ ul li {
   border-radius: 50%;
 }
 
-.dropdown-content p:hover {
-  background: #ededed;
-}
-
-.dropdown-content {
-  background-color: #f9f9f9;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-}
-
-.dropdown-content a{
-  color: #77a6f7 !important;
-}
 
 /************ CLASSES **************/
 
@@ -110,16 +123,28 @@ ul li {
 
 /********** DESIGN **********/
 
+
+.dropdown-content p:hover {
+  background: #ededed;
+}
+
+.dropdown-content {
+  background-color: #f9f9f9;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  border-radius: 5px;
+}
+
+.dropdown-content a{
+  color: #77a6f7 !important;
+  font-size: 15px;
+}
+
 .hidden {
   display: none;
 }
 
 .full-height {
-  height: 100vh;
-}
-
-.def-size {
-  font-size: 21px;
+  min-height: 100vh;
 }
 
 .dark {
@@ -148,9 +173,20 @@ ul li {
   background-color: rgba(255, 255, 255, 0.85);
 }
 
-.submit {
-  background-color: rgba(108,191,9, 1) !important;
+.submit, .delete {
   color: white;
+}
+
+.submit {
+  background-color: rgba(108, 191, 9, 1) !important;
+}
+
+.delete {
+  background-color: rgba(199, 0, 0, 1) !important;
+}
+
+.delete:hover {
+  background-color: rgba(199, 0, 0, 0.85) !important;
 }
 
 .submit:hover {
@@ -158,7 +194,33 @@ ul li {
 }
 
 .blurb span {
-  color: #151515;
+  color: #191919;
+}
+
+.blurbs h3 {
+  font-size: 30px;
+}
+
+.dash-bot {
+  width: 80%;
+  margin: auto;
+  padding: 10px 0;
+  border-bottom: dashed 2px black;
+  border-bottom-width: medium;
+}
+
+input[type=submit], button {
+  border: none;
+}
+
+input[type=text],
+input[type=password],
+input[type=email] {
+  padding: 12px 20px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
 
 input:hover{
@@ -196,4 +258,19 @@ input:hover{
 	-webkit-box-shadow: 0 8px 6px -6px black;
 	   -moz-box-shadow: 0 8px 6px -6px black;
 	        box-shadow: 0 8px 6px -6px black;
+}
+
+.white-back {
+  background-color: rgba(255, 255, 255, 0.85);
+  border-radius: 5px;
+  padding: 1.5em;
+}
+
+.white-back > * {
+  margin-top: 1em;
+}
+
+.centered {
+  position: relative;
+  margin: 0 auto;
 }

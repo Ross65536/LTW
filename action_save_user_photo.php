@@ -5,10 +5,9 @@ $usersDB = new UsersFacade();
 
 $username = $_GET['username'];
 $image = $_FILES["user_image_" . $username];
-echo "--" . $image['tmp_name'];
-var_dump($image);
+echo "Cannot do this right now";
 
-upload($image, $username, "users_photos");
+//upload($image, $username, "users_photos");
 
 // try {
 //   $usersDB->updatePhoto($username);

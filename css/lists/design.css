@@ -1,8 +1,14 @@
 /* Lists CSS */
-#body-section {
+#single_list, #edit_list {
+  background-image: url("../../images/lists_1.jpg");
+  background-size: cover;
+}
+
+#my_lists, #create_list {
   background-image: url("../../images/single_list.jpg");
   background-size: cover;
 }
+
 .error_message {
     color: rgb(255, 0, 0);
     background-color: rgb(250, 195, 195);
@@ -45,27 +51,47 @@
 }
 
 .list {
-  background-color: rgba(255, 255, 255, 0.85);
   padding: 1em 0;
-}
-
-#items_list {
-  border-radius: 5px 0 0 5px;
-  border-right: solid 1px grey;
-  border-right-width: thin;
-  border-right-style: dashed;
-}
-
-#users_list {
-  border-radius: 0 5px 5px 0;
-}
-
-.white-back {
   background-color: rgba(255, 255, 255, 0.85);
   border-radius: 5px;
-  padding: 1.5em;
 }
 
-.white-back > * {
-  margin-top: 1em;
+.list h3 {
+  font-size: 50px;
+}
+
+#items_list li, #users_list li {
+  max-width: 95%;
+  margin: 20px 0;
+  position: relative;
+}
+
+#items_list li span.item, #users_list li span.username {
+  display: inline-block;
+  margin: 0 20px;
+}
+
+#items_list li input[type=checkbox] {
+  display: inline-block;
+}
+
+#items_list li .btn .delete, #users_list li .btn .delete {
+  display: inline-block;
+}
+
+.blurb:first-of-type > div{
+  border-right: dashed 1px grey;
+}
+
+#photo {
+  display: flex;
+  flex-direction: column;
+}
+
+#photo input {
+  margin: 10px auto;
+}
+
+#delete {
+  padding-bottom: 2em;
 }

@@ -26,7 +26,7 @@ function updateArrays() {
 function createDeleteButton() {
   var deleteButton = document.createElement("button");
   deleteButton.type = "button";
-  deleteButton.className = "delete-button";
+  deleteButton.className = 'btn delete';
   deleteButton.appendChild(document.createTextNode('X'));
   deleteButton.addEventListener('click', function() {
     var choice = confirm('Confirm your intention to delete?');
@@ -143,7 +143,7 @@ function addSingleItem(item) {
   var li = document.createElement("li");
   var input = document.createElement("input");
   var span = document.createElement('span');
-  span.className = 'item';
+  span.className = 'item default';
   input.type = 'hidden';
   input.value = name;
   input.setAttribute('name', 'items[]');
@@ -182,7 +182,7 @@ function addSingleUser(username) {
   input.type = 'hidden';
   input.value = username;
   var span = document.createElement('span');
-  span.className = "username";
+  span.className = "username default";
   input.setAttribute('name', 'users[]');
   li.appendChild(span);
   span.appendChild(document.createTextNode(username));

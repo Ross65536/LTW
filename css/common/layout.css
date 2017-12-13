@@ -20,6 +20,11 @@ footer {
   padding: 1em;
 }
 
+#title {
+  padding: 5px;
+  text-align: center;
+}
+
 #logo img {
   width: 3rem;
   max-width: 100%;
@@ -31,6 +36,10 @@ footer {
 #logged-out {
   display: flex;
   flex-direction: row;
+}
+
+.parallax {
+  background: fixed;
 }
 
 .dropdown {
@@ -83,33 +92,37 @@ footer {
   padding-left: 2.5em;
 }
 
-.jumbotron h2 {
-  margin: 1em auto;
-}
-
 .inline-buttons {
-  margin-top: 10vh;
+  margin-top: 50px;
   display: inline-block;
 }
 
 .blurbs {
+  display: table;
+  width: 90%;
   text-align: center;
   margin: 75px auto;
 }
 
 .blurbs h1 {
-  margin-bottom: 2em;
+  margin: auto;
+  margin-bottom: 1em;
+  padding-bottom: .7em;
+  width: 70%;
 }
 
 .blurbs span.fa {
-	margin-top: 30px;
-  margin-bottom: 30px;
+	margin: 15px auto;
 }
 
 .blurbs:after {
   content: "";
   display: table;
   clear: both;
+}
+
+.blurb {
+  display: table-cell;
 }
 
 .blurbs-4 .blurb{
@@ -165,4 +178,9 @@ input {
 .off-edges {
   width: 90%;
   margin: auto;
+}
+
+.vertical-align {
+  position: absolute;
+  top: 30%;
 }
