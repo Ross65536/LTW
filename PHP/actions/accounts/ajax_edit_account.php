@@ -48,7 +48,7 @@
             if($newPassword != $confirmNewPassword)
                 array_push($error_list, "password_match_error");
             else if(! Regex\checkStrongPassword($newPassword))
-                array_push($error_list, "password_match_error");
+                array_push($error_list, "password_doesnt_match_pattern");
         }
         
         if(count($error_list) == 0) //onlu updates on no errors

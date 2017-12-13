@@ -49,12 +49,14 @@ class AjaxFormSubmitterFactory
 		let usernameError = form.querySelector('#username_already_exists_error');
 		let emailError = form.querySelector('#email_already_exists_error');
 		let passwordMatchError = form.querySelector('#password_match_error');
+		let captchaError = form.querySelector('#captcha_error');
 		
 		let registerErrorMap = 
 		{
 			"username_exists_error" : DOMLib.getBindShowError(usernameError),
 			"email_exists_error" : DOMLib.getBindShowError(emailError),
 			"password_match_error" : DOMLib.getBindShowError(passwordMatchError),
+			"wrong_captcha": DOMLib.getBindTimedShowError(captchaError),
 		};
 		
 		let inputUsername = form.querySelector('input[name="username"]');
@@ -79,12 +81,14 @@ class AjaxFormSubmitterFactory
 		let passwordMatchError = form.querySelector('#password_match_error2');
 		let wrongPasswordError = form.querySelector('#wrong_password_error');
 		let editSuccess = form.querySelector('#successfuly_edited_account_message');
+		let captchaError = form.querySelector('#captcha_error');
 		
 		let registerErrorMap = 
 		{
 			"email_exists_error" : DOMLib.getBindShowError(emailError),
 			"wrong_password_error" : DOMLib.getBindShowError(wrongPasswordError),
 			"password_match_error" : DOMLib.getBindShowError(passwordMatchError),
+			"wrong_captcha": DOMLib.getBindTimedShowError(captchaError),
 		};
 		let showMsgFun = DOMLib.getBindTimedShowSuccess(editSuccess);
 

@@ -30,12 +30,23 @@ DOMLib.getBindShowError = (elem) => DOMLib.changeClass.bind(DOMLib, elem, "error
 
 DOMLib.getBindHideError = (elem) => DOMLib.changeClass.bind(DOMLib, elem, "error_message", "error_message_invisible");
 
-DOMLib.getBindTimedShowSuccess = function (elem, timeout = 2000) 
+DOMLib.getBindTimedShowSuccess = function (elem, timeout = 3000) 
 {
     let timedoutFun = function()
     {
         DOMLib.changeClass(elem, "success_message_invisible", "success_message");
         window.setTimeout(() => DOMLib.changeClass(elem, "success_message", "success_message_invisible"), timeout);
+    }
+
+    return timedoutFun;
+};
+
+DOMLib.getBindTimedShowError = function (elem, timeout = 3000) 
+{
+    let timedoutFun = function()
+    {
+        DOMLib.changeClass(elem, "error_message_invisible", "error_message");
+        window.setTimeout(() => DOMLib.changeClass(elem, "error_message", "error_message_invisible"), timeout);
     }
 
     return timedoutFun;

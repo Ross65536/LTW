@@ -27,6 +27,7 @@
             <input type="password" name="confirm_password" required>
         </label>
         <?php include_once('templates/form_captcha.php'); ?>
+        <p id="captcha_error" class="error_message_invisible"> Incorrect Captcha, please try again. </p>
         <input type="submit" value="Register">
     </form>
 </section>
