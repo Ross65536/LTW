@@ -32,6 +32,34 @@ class IPattemptsFacade extends ConnectionBase
             return false;
     }
 
+    public function incrementNumAttempts($ip)
+    {
+        if(! $this->checkIPLogged($ip))
+            throw new Exception("Invalid Use of method");
+
+        $stmt = $this->db->prepare(
+            "UPDATE IPattempts 
+            SET num_attempts = num_attempts + 1
+            WHERE ip = (?)"
+        );
+
+        $stmt->execute(array($ip));
+    }
+
+    public function resetNumAttempts($ip)
+    {
+        if(! $this->checkIPLogged($ip))
+            throw new Exception("Invalid Use of method");
+
+        $stmt = $this->db->prepare(
+            "UPDATE IPattempts 
+            SET num_attempts = 0
+            WHERE ip = (?)"
+        );
+
+        $stmt->execute(array($ip));
+    }
+
     private function getIPRow($ip)
     {
         $stmt = $this->db->prepare(
