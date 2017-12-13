@@ -5,38 +5,38 @@ include_once('database/UsersFacade.php');
 
 $usersDB = new UsersHTMLDecorator(new UsersFacade());
 $username = Session\getHTMLLogin();
-$info = $usersDB->getPhoto($username);
+$photo = $usersDB->getPhoto($username, "thumbs_tiny");
 ?>
 
 <body>
 
 <div id="container">
 
-    <header id="header">
-        <a href="index.php" id="title">
-            <div>
-            <img id="logo_image" src="images/logo2.png" alt="logo">
+    <header id="header" >
+      <div class="wrapper">
+        <a href="index.php" id="title" class="inner">
+            <div id="logo">
+              <img id="logo_image" src="images/logo2.png" alt="logo"><span id="site_name">TODO Lists</span>
             </div>
-            <h1> TODO Lists</h1>
         </a>
+      </div>
 
 
-        <?php if(Session\isLoggedIn()) { ?>
-            <p id="display_username" >Hello <?=Session\getHTMLLogin()?></p>
-        <? } ?>
-
-        <ul id="accounts_bar">
-            <?php  if(! Session\isLoggedIn()) { ?>
-                <li><a id="register" href="register.php">Register</a></li>
-                <li><a id="login" href="login.php">Login</a></li>
-            <?php } else { ?>
-                <li><a href="my_lists.php">My Lists</a></li>
-                <li><a href="edit_account.php"><img src="<?=$info?>" alt="Profile Picture" /></a></li>
-                <li><a href="PHP/actions/accounts/action_logout.php">Logout</a></li>
+            <?php  if(Session\isLoggedIn()) { ?>
+              <div class="dropdown">
+                <div class="container">
+                  <img id="profile_pic" src="<?=$photo?>"/>
+                  <div class="middle">
+                    <a href="upload_user_photo.php"><div class="text">Change Photo</div></a>
+                  </div>
+                </div>
+                <div class="dropdown-content">
+                  <p><a href="my_lists.php">My Lists</a></p>
+                  <p><a href="edit_account.php">Edit Account</a></p>
+                  <p><a href="PHP/actions/accounts/action_logout.php">Logout</a></p>
+                </div>
+              </div>
             <?php } ?>
-        </ul>
-
-
         <!-- <menu>
             <ul>
                 <li><a href="index.php">??</a></li>

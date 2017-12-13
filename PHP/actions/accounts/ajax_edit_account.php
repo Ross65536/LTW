@@ -1,4 +1,4 @@
-<?php 
+<?php
     include_once(__DIR__ . '/../../CommonInit.php');
     if( !Session\isLoggedIn())
         AjaxReply\returnErrors(["not_logged_in"]);
@@ -9,7 +9,7 @@
     include_once(__DIR__ . '/../../Regex.php');
     if( ! Forms\checkFormKeyCorrect($_GET['form_key']))
         AjaxReply\returnError("bad_form_key");
-    
+
     include_once(__DIR__ . '/../../Captcha.php');
     if(! checkCaptchaSucces())
         AjaxReply\returnError("wrong_captcha");
@@ -25,7 +25,7 @@
     $usersDB = new UsersHTMLDecorator(new UsersFacade());
 
     $error_list = [];
-    
+
     if($usersDB->checkValidUserLoginInfo($username, $oldPassword))
     {
         $currentSecInfo = $usersDB->getSecondaryInfo($username);
@@ -39,11 +39,12 @@
         {
             if(! Email\checkValidFormat($email))
                 array_push($error_list, "email_string_not_an_email");
-            else if($usersDB->checkEmailExists($email))
+            if($usersDB->checkEmailExists($email))
                 array_push($error_list, "email_exists_error");
-            else if(! Email\checkValid($email))
+            if(! Email\checkValid($email))
                 array_push($error_list, "email_doesnt_exist");
-            else
+            
+            if(count($error_list) == 0) //only here
                 $updateSecInfo["email"] = $email;
         }
 
@@ -55,12 +56,12 @@
             else if(! Regex\checkStrongPassword($newPassword))
                 array_push($error_list, "password_doesnt_match_pattern");
         }
-        
+
         if(count($error_list) == 0) //onlu updates on no errors
         {
             if(!$usersDB->updateSecondaryInfo($username, $updateSecInfo))
-                array_push($error_list, "database_error");        
-            
+                array_push($error_list, "database_error");
+
             if($shouldUpdatePassword && count($error_list) == 0)
                 if(!$usersDB->updatePassword($username, $newPassword))
                     array_push($error_list, "database_error_2");
@@ -68,6 +69,6 @@
     }
     else
         array_push($error_list, "wrong_password_error");
-        
+
     AjaxReply\returnErrors($error_list); //returns empty [] on success
 ?>

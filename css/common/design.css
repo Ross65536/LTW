@@ -1,4 +1,4 @@
-
+/* Common CSS */
 /*        COLORS       */
 /* green:      #00887a */
 /* skin:       #ffccbc */
@@ -7,37 +7,15 @@
 /* blue:       #77a6f7 */
 
 
+/*********** BODY ********/
 
 body {
-    font-family: Verdana, Georgia, serif; 
+    font-family: Verdana, Georgia, serif;
 }
 
-
-*:focus {
-    outline: none;
-}
-
-#header h1 {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-#header, footer 
-{
-    background-color: #00887a;
-    color: white;
-    font-family: 'Lato Light', serif;
-}
-
-#header {
-    padding: 1.5em 1em;
-    margin: auto auto;
-    border-radius: 10px 10px 0 0;
-    border-bottom: solid 1px rgba(0, 0, 0, 0.2);
-}
 
 body > * a {
     text-decoration: none;
-    
 }
 
 footer a, #header a {
@@ -49,25 +27,75 @@ body {
     border-radius: 10px;
 }
 
-#body-section {
-    text-align: center;
-    border: solid 1px rgba(0, 0, 0, 0.2);
+*:focus {
+    outline: none;
+}
+
+
+/******* ID's *************/
+#header h1 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#header, footer{
+  background-color: black;
+  color: white;
+  font-family: 'Lato Light', serif;
+}
+
+#logo {
+  font-size: 30px;
 }
 
 footer {
-    text-align: center;
-    border-radius: 0 0 10px 10px;
+  text-align: center;
 }
 
-#display_username
-{
-    color: white;
-    text-align: right;
+/******* ACCOUNT MENU ***********/
+
+ul li {
+    list-style: none;
+    font-family: Ubuntu, sans-serif;
 }
+
+#logged-out li, footer a {
+  padding: 0 10px;
+  border-left: 1px solid;
+}
+
+#logged-out > li:first-child {
+    border: none;
+}
+
+#register:hover, #login:hover, #about:hover {
+  color: #d3d3d3;
+}
+
+#profile_pic {
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  border-radius: 50%;
+}
+
+.dropdown-content p:hover {
+  background: #ededed;
+}
+
+.dropdown-content {
+  background-color: #f9f9f9;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a{
+  color: #77a6f7 !important;
+}
+
+/************ CLASSES **************/
+
+/******* ERRORS ********/
 
 .error_message_invisible, .success_message_invisible
 {
-    display: none;   
+    display: none;
 }
 
 .error_message
@@ -77,51 +105,95 @@ footer {
 
 .success_message
 {
-    color: green;   
+    color: green;
 }
 
-ul li, #display_username {
-    list-style: none;
-    font-family: Ubuntu, sans-serif;
+/********** DESIGN **********/
+
+.hidden {
+  display: none;
 }
 
-#accounts_bar li, footer a
-{
-    border-left: 1px solid;
+.full-height {
+  height: 100vh;
 }
 
-#accounts_bar > li:first-child
-{
-    border: none;
+.def-size {
+  font-size: 21px;
 }
 
-#register {
-    background-color: #00887a;
-    border-radius: 5px;
-    padding: 5px;
+.dark {
+  color: black;
 }
 
-#register:hover {
-    background-color: #ffccbc;    
+.light {
+  color: white;
 }
 
-#login {
-    background-color: #00887a;
-    border-radius: 5px;
-    padding: 5px;   
+.btn {
+  transition: background-color 2s ease;
+  transition: border-radius 0.5s ease;
+  transition: letter-spacing 0.2s ease;
+  font-size: 22px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: white;
+  color: black;
 }
 
-#login:hover {
-    background-color: #ffccbc;
-    margin-bottom: 10px;
-    }
-
-#about {
-    background-color: #00887a;
-    border-radius: 5px;
-    padding: 5px;  
+.btn:hover {
+  cursor: pointer;
+  letter-spacing: 2px;
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.85);
 }
 
-#about:hover {
-    background-color: #ffccbc;
-    }
+.submit {
+  background-color: rgba(108,191,9, 1) !important;
+  color: white;
+}
+
+.submit:hover {
+  background-color: rgba(108,191,9, 0.85) !important;
+}
+
+.blurb span {
+  color: #151515;
+}
+
+input:hover{
+  letter-spacing: 1px;
+}
+
+::-webkit-input-placeholder {
+  color: light-gray;
+}
+
+.rounded-img {
+  border-radius: 50%;
+}
+
+
+.container:hover .image {
+  opacity: 0.3;
+}
+
+.container:hover .middle {
+  opacity: 1;
+}
+
+.text {
+  background-color: white;
+  border-radius: 5px;
+  font-size: 16px;
+  padding: 8px 15px;
+  color: black !important;
+  cursor: pointer;
+  text-align: center;
+}
+
+.one-edge-shadow {
+	-webkit-box-shadow: 0 8px 6px -6px black;
+	   -moz-box-shadow: 0 8px 6px -6px black;
+	        box-shadow: 0 8px 6px -6px black;
+}
