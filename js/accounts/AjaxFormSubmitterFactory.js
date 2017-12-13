@@ -50,11 +50,13 @@ class AjaxFormSubmitterFactory
 		let emailError = form.querySelector('#email_already_exists_error');
 		let passwordMatchError = form.querySelector('#password_match_error');
 		let captchaError = form.querySelector('#captcha_error');
+		let emailExistenceError = form.querySelector('#email_doesnt_exist_error');
 		
 		let registerErrorMap = 
 		{
 			"username_exists_error" : DOMLib.getBindShowError(usernameError),
 			"email_exists_error" : DOMLib.getBindShowError(emailError),
+			"email_doesnt_exist" : DOMLib.getBindShowError(emailExistenceError),
 			"password_match_error" : DOMLib.getBindShowError(passwordMatchError),
 			"wrong_captcha": DOMLib.getBindTimedShowError(captchaError),
 		};
@@ -67,6 +69,7 @@ class AjaxFormSubmitterFactory
 
 		AjaxFormSubmitterFactory.addHideErrorHandler(inputUsername, usernameError);
 		AjaxFormSubmitterFactory.addHideErrorHandler(inputEmail, emailError);
+		AjaxFormSubmitterFactory.addHideErrorHandler(inputEmail, emailExistenceError);
 		AjaxFormSubmitterFactory.disableSubmitOnUnmatchingPassword(inputPassword, inputConfirmPassword, passwordMatchError, submitButton);
 
 		let ajaxActionPath = "PHP/actions/accounts/ajax_register.php";
@@ -82,10 +85,12 @@ class AjaxFormSubmitterFactory
 		let wrongPasswordError = form.querySelector('#wrong_password_error');
 		let editSuccess = form.querySelector('#successfuly_edited_account_message');
 		let captchaError = form.querySelector('#captcha_error');
+		let emailExistenceError = form.querySelector('#email_doesnt_exist_error');
 		
 		let registerErrorMap = 
 		{
 			"email_exists_error" : DOMLib.getBindShowError(emailError),
+			"email_doesnt_exist" : DOMLib.getBindShowError(emailExistenceError),
 			"wrong_password_error" : DOMLib.getBindShowError(wrongPasswordError),
 			"password_match_error" : DOMLib.getBindShowError(passwordMatchError),
 			"wrong_captcha": DOMLib.getBindTimedShowError(captchaError),
@@ -100,7 +105,9 @@ class AjaxFormSubmitterFactory
 		let submitButton = form.querySelector('input[type="submit"]');
 
 		AjaxFormSubmitterFactory.addHideErrorHandler(inputEmail, emailError);
-		AjaxFormSubmitterFactory.addHideErrorHandler(inputOldPassword, wrongPasswordError);		
+		AjaxFormSubmitterFactory.addHideErrorHandler(inputOldPassword, wrongPasswordError);	
+		AjaxFormSubmitterFactory.addHideErrorHandler(inputEmail, emailExistenceError);
+			
 		AjaxFormSubmitterFactory.disableSubmitOnUnmatchingPassword(inputNewPassword, inputConfirmNewPassword, passwordMatchError, submitButton);
 
 		let ajaxActionPath = "PHP/actions/accounts/ajax_edit_account.php";

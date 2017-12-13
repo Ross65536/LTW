@@ -12,6 +12,7 @@
             <input type="text" name="name">
         </label>
         <p id="email_already_exists_error" class="error_message_invisible"> Email already exists </p>
+        <p id="email_doesnt_exist_error" class="error_message_invisible"> Email doesn't exist </p>
         <label>
             <span> E-mail:  </span>
             <input type="email" name="email">

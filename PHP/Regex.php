@@ -12,5 +12,4 @@
         $isMatching = preg_match($php_password_regex, $password) == 1;
         return $isMatching;
     }
-
 ?>

@@ -13,6 +13,7 @@
     include_once(__DIR__ . '/../../Captcha.php');
     if(! checkCaptchaSucces())
         AjaxReply\returnError("wrong_captcha");
+    include_once(__DIR__ . '/../../Email.php');
 
     $username = Session\getLoginUsername();
     $oldPassword = $_GET['old_password'];
@@ -36,8 +37,12 @@
 
         if($email != "" && $currentUserEmail != $email) //should update email
         {
-            if($usersDB->checkEmailExists($email))
+            if(! Email\checkValidFormat($email))
+                array_push($error_list, "email_string_not_an_email");
+            else if($usersDB->checkEmailExists($email))
                 array_push($error_list, "email_exists_error");
+            else if(! Email\checkValid($email))
+                array_push($error_list, "email_doesnt_exist");
             else
                 $updateSecInfo["email"] = $email;
         }

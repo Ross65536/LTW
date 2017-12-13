@@ -13,6 +13,7 @@
     include_once(__DIR__ . '/../../Captcha.php');
     if(! checkCaptchaSucces())
         AjaxReply\returnError("wrong_captcha");
+    include_once(__DIR__ . '/../../Email.php');
 
     $username = $_GET['username'];
     $password = $_GET['password'];
@@ -33,9 +34,16 @@
         if($usersDB->checkUsernameExists($username))
             array_push($error_list, "username_exists_error");
 
-        if($usersDB->checkEmailExists($email))
-            array_push($error_list, "email_exists_error");
-
+        if($email != "")
+        {
+            if($usersDB->checkEmailExists($email))
+                array_push($error_list, "email_exists_error");
+            if(! Email\checkValidFormat($email))
+                array_push($error_list, "email_string_not_an_email");
+            if(! Email\checkValid($email))
+                array_push($error_list, "email_doesnt_exist");
+        }
+        
         if(count($error_list) > 0)
             AjaxReply\returnErrors($error_list);
         else
