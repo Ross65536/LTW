@@ -23,19 +23,55 @@
             return false;
     }
 
-    function checkShouldDisplayHTMLCaptcha()
+    function checkCaptchaCounter($maxAttempts)
     {
-        global $NUM_ATTEMPTS; 
-
         $ipAttemptsDB = new IPattemptsFacade();
         $clientIP = $_SERVER['REMOTE_ADDR'];
         $ipAttemptsDB->tryAddingIP($clientIP); //insert 0 attempts if ip new
 
         $numAttempts = $ipAttemptsDB->getNumAttempts($clientIP);
 
-        $bShouldDisplay = $numAttempts > $NUM_ATTEMPTS;
+        $bShouldDisplay = $numAttempts > $maxAttempts;
 
         return $bShouldDisplay;
+    }
+
+    function checkClientIPLogged()
+    {
+        $ipAttemptsDB = new IPattemptsFacade();
+        $clientIP = $_SERVER['REMOTE_ADDR'];
+        return $ipAttemptsDB->checkIPLogged($clientIP);
+    }
+
+    function shouldDisplayCaptcha()
+    {
+        global $NUM_ATTEMPTS; 
+        return checkCaptchaCounter($NUM_ATTEMPTS);
+    }
+
+    function checkNumberedCaptchaSuccess($bUseGET = true)
+    {
+        if(! shouldDisplayCaptcha())
+            return true;
+        else 
+        {
+            $bSuccess = checkCaptchaSucces($bUseGET);
+            if($bSuccess)
+            {
+                $ipAttemptsDB = new IPattemptsFacade();
+                $clientIP = $_SERVER['REMOTE_ADDR'];   
+                $ipAttemptsDB->resetNumAttempts($clientIP);
+            }
+
+            return $bSuccess;
+        }
+    }
+
+    function incrementCaptchaAttempts()
+    {
+        $ipAttemptsDB = new IPattemptsFacade();
+        $clientIP = $_SERVER['REMOTE_ADDR'];   
+        $ipAttemptsDB->incrementNumAttempts($clientIP);
     }
 
 ?>

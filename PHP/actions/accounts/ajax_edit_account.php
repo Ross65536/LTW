@@ -11,8 +11,10 @@
         AjaxReply\returnError("bad_form_key");
 
     include_once(__DIR__ . '/../../Captcha.php');
-    if(! checkCaptchaSucces())
-        AjaxReply\returnError("wrong_captcha");
+    if(! checkClientIPLogged())
+        AjaxReply\returnError("not_valid_site_use");
+    if(! checkNumberedCaptchaSuccess())
+        AjaxReply\returnError("wrong_captcha"); 
     include_once(__DIR__ . '/../../Email.php');
 
     $username = Session\getLoginUsername();
@@ -70,5 +72,13 @@
     else
         array_push($error_list, "wrong_password_error");
 
+    if(count($error_list) > 0)
+    {
+        incrementCaptchaAttempts();
+        if(shouldDisplayCaptcha())
+            array_push($error_list, "should_display_captcha");
+    }
+    
+    
     AjaxReply\returnErrors($error_list); //returns empty [] on success
 ?>

@@ -6,10 +6,6 @@ class CaptchaFormAdapter extends AjaxFormSubmitAdapter
     buildActionURI(event)
     {
         let formURL = super.buildActionURI(event);
-        let varC = this.isCaptchaDefined;
-        if (! varC) 
-            return formURL;
-        
         let captcha = grecaptcha.getResponse();
         let newGETURL = `${formURL}&${RECAPTCHA_FORM_NAME}=${captcha}`;
         return newGETURL;
@@ -17,14 +13,9 @@ class CaptchaFormAdapter extends AjaxFormSubmitAdapter
 
     handleJSONResponseTemplate(responseErrorList)
     {
-        if(this.isCaptchaDefined && responseErrorList.length != 0) //some errors
+        if(responseErrorList.length != 0) //some errors
             grecaptcha.reset();
         
         return super.handleJSONResponseTemplate(responseErrorList);
-    }
-
-    get isCaptchaDefined()
-    {
-        return (typeof grecaptcha !== 'undefined');
     }
 }

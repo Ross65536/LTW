@@ -30,3 +30,9 @@ form * {
 form input {
   padding: 5px;
 }
+
+
+.invisible_captcha 
+{
+  display: none;
+}
