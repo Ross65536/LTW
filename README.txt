@@ -30,3 +30,7 @@ u: test3
 p: AasP1)3ase
 
 Users "test" and "test3" already share a list with some items.
+
+--- Libraries Used:
+
+* Google's reCaptcha V2: on login, register, edit info pages
