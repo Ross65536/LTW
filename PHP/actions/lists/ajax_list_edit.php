@@ -13,14 +13,16 @@
 if (isset($_GET['function']) && $_GET['function'] == 'validUser') {
     if ($_GET['username'] == $_SESSION['username']) {
       echo -1;
-    } if ($listsDB->isUserOnList($_GET['id'], $_GET['username'])){
+      return;
+    }
+    if ($listsDB->isUserOnList($_GET['id'], $_GET['username'])){
           echo -3;
     } else if ($userDB->checkUsernameExists($_GET['username'])) {
       if (isset($_GET['id']) && ($_GET['id'] != -1)) {
         $listsDB->addUser($_GET['id'], $_GET['username']);
       }
       echo 0;
-    }  else {
+    } else {
       echo -2;
     }
 }

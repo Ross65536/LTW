@@ -1,4 +1,4 @@
-<div id="register-page" class="full-height parallax">
+<div id="register-page" class="parallax">
 	<section id="edit_account" class="account vertical-align one-edge-shadow" >
 		<p id="user_p"> User: <?= "$username" ?></p>
 		<h3>Edit the fields you want to change and enter your password for confirmation. </h3>

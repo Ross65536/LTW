@@ -33,6 +33,10 @@
   font-size: 30px;
 }
 
+p.password_regex_tip {
+  font-size: 11px;
+}
+
 
 /*
 * when form submit button disabled
