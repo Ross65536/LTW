@@ -25,6 +25,12 @@ footer {
   text-align: center;
 }
 
+#small_menu {
+  display: none;
+  color: white;
+  margin: auto;
+}
+
 #logo img {
   width: 3rem;
   max-width: 100%;
@@ -98,8 +104,6 @@ footer {
 }
 
 .blurbs {
-  display: table;
-  width: 90%;
   text-align: center;
   margin: 75px auto;
 }

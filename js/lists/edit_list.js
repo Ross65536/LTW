@@ -24,16 +24,11 @@ document.addEventListener('DOMContentLoaded', function() {
   for (var i = 0; i < boxes.length; i++) {
     boxes[i].addEventListener('change', function() {
       if (this.checked) {
-        this.parentElement.style.textDecoration = 'line-through';
         updateCheckbox(this.name.split('_').join(' '), true);
       } else {
-        this.parentElement.style.textDecoration = '';
         updateCheckbox(this.name.split('_').join(' '), false);
       }
     });
-    if (boxes[i].checked) {
-      boxes[i].parentElement.style.textDecoration = 'line-through';
-    }
   }
 
   document.querySelector('input[type=submit]').addEventListener('click', function(e) {
@@ -58,6 +53,7 @@ function verifyFieldsFull() {
     valid = false;
   }
 
+  if (TYPE != 'create')
   if (!document.querySelector('input[type=file]').value.match(/[^/]+(jpg)$/) &&
     document.querySelector('input[type=file]').value != "") {
     document.getElementById("photo_extension").classList.remove('hidden');

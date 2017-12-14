@@ -114,6 +114,7 @@ ul li {
 .error_message
 {
     color: red;
+    padding-top: 10px;
     margin: 10px;
 }
 
@@ -123,7 +124,6 @@ ul li {
 }
 
 /********** DESIGN **********/
-
 
 .dropdown-content p:hover {
   background: #ededed;

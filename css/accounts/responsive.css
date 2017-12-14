@@ -1,0 +1,9 @@
+@media only screen and (max-width: 720px) {
+
+    .account {
+      padding: 4em 0;
+      top: 45vh;
+      left: 0;
+      width: 100%;
+    }
+}

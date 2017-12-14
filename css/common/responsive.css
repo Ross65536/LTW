@@ -1,6 +1,78 @@
-@media only screen and (max-width: 600px) {
-    .blurb { 
-        display: block;
-        width: 100%;
+@media only screen and (max-width: 720px) {
+    body {
+      width: 100%;
+      box-shadow: none;
     }
+
+    p,
+    span.default,
+    input,
+    button,
+    .btn {
+        font-size: 15px
+    }
+
+    input[type=checkbox] {
+      zoom:1;
+      transform:scale(1.5);
+      -ms-transform:scale(1.5);
+      -webkit-transform:scale(1.5);
+      -o-transform:scale(1.5);
+      -moz-transform:scale(1.5);
+      transform-origin:0 0;
+      -ms-transform-origin:0 0;
+      -webkit-transform-origin:0 0;
+      -o-transform-origin:0 0;
+      -moz-transform-origin:0 0;
+      -webkit-transform-origin:0 0;
+      vertical-align: text-bottom;
+    }
+
+    .dropdown:active .dropdown-content,
+    .dropdown:focus .dropdown-content {
+      visibility: visible;
+    }
+
+    .dropdown-content {
+      left: -50px;
+      width: 100px;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-size: 40px;
+    }
+
+    .jumbotron {
+      padding: 100px 20px;
+    }
+
+    .blurbs-4 .blurb,
+    .blurbs-3 .blurb,
+    .blurbs-2 .blurb {
+      width: 100%;
+      margin: 2em auto;
+    }
+
+    #large_menu {
+      display: none;
+    }
+
+    #small_menu {
+      margin-top: 40px;
+      display: inline-block;
+    }
+
+    #title {
+      border: none;
+      left: -60px;
+    }
+
+    input[type=text],
+    input[type=email],
+    input[type=password] {
+      padding: 3px 7px;
+      font-size: 15px;
+    }
+
+
 }

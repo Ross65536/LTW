@@ -1,0 +1,19 @@
+@media only screen and (max-width: 720px) {
+  #top_header {
+    display: block;
+    margin: auto;
+    padding: 0;
+  }
+
+  #main_info {
+    padding: 5px;
+  }
+
+  #image {
+    margin: 1em auto;
+  }
+
+  .blurb:first-of-type > div{
+    border: none;
+  }
+}

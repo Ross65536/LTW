@@ -1,5 +1,5 @@
 <div id="main-content">
-  <div id="landing" class="full-height jumbotron light def-size">
+  <div id="landing" class="full-height jumbotron light def-size parallax">
       <h1> Organize your life. </h1>
       <div>
           <h2> A simple, straightforward way to organize your tasks. </h2>

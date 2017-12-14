@@ -166,29 +166,28 @@ function addSingleItem(item) {
   check.setAttribute('name', name);
   check.addEventListener('change', function() {
     if (this.checked) {
-      this.parentElement.style.textDecoration = 'line-through';
       updateCheckbox(this.name.split('_').join(' '), true);
     } else {
-      this.parentElement.style.textDecoration = '';
       updateCheckbox(this.name.split('_').join(' '), false);
     }
   });
-  if (TYPE != 'create' && TYPE != 'edit') {
+  if (TYPE != 'create' || TYPE != 'edit') {
     check.disabled = true;
   }
   li.appendChild(check);
   li.appendChild(span);
   span.appendChild(document.createTextNode(item));
   li.appendChild(input);
-  try {
-    let deleteButton = createDeleteButton();
-    li.appendChild(deleteButton);
-  } catch (e) {
+  if (TYPE == 'create' & TYPE == 'edit') {
+    try {
+      let deleteButton = createDeleteButton();
+      li.appendChild(deleteButton);
+    } catch (e) {
 
+    }
   }
   ul.appendChild(li);
 }
-
 function addSingleUser(username) {
   var ul = document.getElementById("users_list");
   var li = document.createElement("li");
@@ -201,11 +200,13 @@ function addSingleUser(username) {
   li.appendChild(span);
   span.appendChild(document.createTextNode(username));
   li.appendChild(input);
-  try {
-    let deleteButton = createDeleteButton();
-    li.appendChild(deleteButton);
-  } catch (e) {
+  if (TYPE == 'create' || TYPE == 'edit') {
+    try {
+      let deleteButton = createDeleteButton();
+      li.appendChild(deleteButton);
+    } catch (e) {
 
+    }
   }
   ul.appendChild(li);
 }
