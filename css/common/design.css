@@ -114,6 +114,7 @@ ul li {
 .error_message
 {
     color: red;
+    margin: 10px;
 }
 
 .success_message

@@ -3,6 +3,7 @@ var ID = -1;
 
 var allItems = [];
 var allUsers = [];
+var errors = [];
 /* Initialize the items and users arrays */
 document.addEventListener("DOMContentLoaded", function() {
   updateArrays();
@@ -42,6 +43,12 @@ function createDeleteButton() {
   return deleteButton;
 }
 
+function deactivateErrors() {
+  for (var i = 0; i < errors.length; i++) {
+    document.getElementById(errors[i]).classList.add('hidden');
+  }
+}
+
 function toggleLoader(status) {
   if (status) {
     document.querySelector('.edit-form').style.opacity = 0.7;
@@ -57,6 +64,7 @@ function addUser() {
   var type = document.querySelector("input[name=type]").getAttribute("value");
   let id = type == 'create' ? -1 : document.querySelector("input[name=id]").getAttribute("value");
 
+  deactivateErrors();
   try {
     toggleLoader(true);
   } catch (e) {
@@ -80,16 +88,19 @@ function validUser() {
   let index = allUsers.indexOf(user);
 
   if (this.responseText == -3 || index != -1) {
-    alert("[ERROR] That user is already on that list.");
+    document.getElementById("repeated_username").classList.remove('hidden');
+    errors.push("repeated_username");
   } else {
     if (this.responseText == 0) {
       document.querySelector("#user").value = "";
       if (TYPE == 'create')
         addSingleUser(user);
     } else if (this.responseText == -1) {
-      alert('[ERROR] You cannot add yourself.');
+      document.getElementById("own_username").classList.remove('hidden');
+      errors.push("own_username");
     } else if (this.responseText == -2){
-      alert('[ERROR] That username does not exist.');
+      document.getElementById("username_wrong").classList.remove('hidden');
+      errors.push("username_wrong");
     }
   }
   updateArrays();
@@ -98,6 +109,7 @@ function validUser() {
 
 
 function addItem() {
+  deactivateErrors();
   try {
     toggleLoader(true);
   } catch (e) {}
@@ -105,7 +117,8 @@ function addItem() {
   let item = document.querySelector("#item").value;
 
   if (item.length < 1) {
-    alert('[ERROR] Cannot add empty item to list.');
+    document.getElementById("empty_task").classList.remove('hidden');
+    errors.push("empty_task");
     toggleLoader(false)
     return;
   }
@@ -124,7 +137,8 @@ function validItem() {
   let index = allItems.indexOf(item);
 
   if (this.responseText == -1 || index != -1) {
-    alert('[ERROR] That item is already on this list.');
+    document.getElementById("repeated_task").classList.remove('hidden');
+    errors.push("repeated_task");
   } else if (this.responseText == 0) {
     document.querySelector("#item").value = "";
     if (TYPE == 'create')

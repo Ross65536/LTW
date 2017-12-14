@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
   TYPE = document.querySelector("input[name=type]").getAttribute("value");
   ID = TYPE == 'create' ? -1 : document.querySelector("input[name=id]").getAttribute("value");
 
-  let buttons = document.querySelectorAll('.delete-button');
+  let buttons = document.querySelectorAll('button.delete');
   for (var i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener('click', function() {
       var choice = confirm('Confirm your intention to delete?');
@@ -38,6 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   document.querySelector('input[type=submit]').addEventListener('click', function(e) {
       e.preventDefault();
+      deactivateErrors();
       verifyFieldsFull();
   });
 });
@@ -47,13 +48,23 @@ function verifyFieldsFull() {
 
   if (TYPE == 'create')
     if (document.querySelector('input[name=name]').value.length < 4) {
-      alert('[ERROR] The list name is too short!');
+      document.getElementById("short_title").classList.remove('hidden');
+      errors.push("short_title");
       valid = false;
     }
   if (document.getElementById('items_list').getElementsByTagName('li').length == 0) {
-    alert('[ERROR] The items lists cannot be empty!');
+    document.getElementById("empty_list").classList.remove('hidden');
+    errors.push("empty_list");
     valid = false;
   }
+
+  if (!document.querySelector('input[type=file]').value.match(/[^/]+(jpg)$/) &&
+    document.querySelector('input[type=file]').value != "") {
+    document.getElementById("photo_extension").classList.remove('hidden');
+    errors.push("photo_extension");
+    valid = false;
+  }
+
   if (valid)
     document.querySelector('form.edit-form').submit();
 

@@ -40,3 +40,7 @@ form input {
   display: flex;
   flex-direction: column;
 }
+
+#register-page {
+  min-height: 120vh;
+}

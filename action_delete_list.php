@@ -9,7 +9,7 @@ $id = $_GET['id'];
 try {
   $listDB->deleteList($id);
 
-  $php_index_path = 'index.php';
+  $php_index_path = 'my_lists.php';
   Session\redirectTo($php_index_path);
 } catch (PDOException $e) {
   die($e->getMessage());
