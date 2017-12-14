@@ -12,11 +12,11 @@ copy the source files into a server and then execute in project root:
 
 * ./install.sh
 
-to install a clean project.
+to install an empty website.
 
 * ./test_install.sh
 
-to install a clean project with a few test users already inserted in the database.
+to install a website with a few test users already inserted in the database.
 
 ### Test users
 
