@@ -2,7 +2,7 @@
 
 Project developed in the LTW class for the MIEIC course at FEUP, Porto by:
 
-Grupo 09:
+Group 09:
 
 * Igor Bernardo Amorim Silveira - 201505172
 * Rostyslav Khoptiy - 201506219
