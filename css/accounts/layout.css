@@ -41,6 +41,12 @@ form input {
   flex-direction: column;
 }
 
+
 #register-page {
   min-height: 120vh;
+}
+
+.invisible_captcha 
+{
+  display: none;
 }

@@ -1,0 +1,6 @@
+DROP TABLE IF EXISTS IPattempts;
+CREATE TABLE IPattempts 
+(
+  ip VARCHAR PRIMARY KEY,
+  num_attempts INT NOT NULL DEFAULT 0
+);

@@ -6,8 +6,11 @@
     include_once(__DIR__ . '/../../../database/UsersHTMLDecorator.php');
 
     include_once(__DIR__ . '/../../Captcha.php');
-    if(! checkCaptchaSucces())
-        AjaxReply\returnError("wrong_captcha");
+    if(! checkClientIPLogged())
+        AjaxReply\returnError("not_valid_site_use");
+    if(! checkNumberedCaptchaSuccess())
+        AjaxReply\returnError("wrong_captcha"); 
+
 
     $username = $_GET['username'];
     $password = $_GET['password'];
@@ -20,8 +23,14 @@
         Session\logIn($username);
         AjaxReply\returnNoErrors();
     }
-    else 
-        AjaxReply\returnErrors(["login_error"]);
-    
+    else //on errors
+    {
+        $error_list = ["login_error"];
+        incrementCaptchaAttempts();
+        if(shouldDisplayCaptcha())
+            array_push($error_list, "should_display_captcha");
+
+        AjaxReply\returnErrors($error_list);
+    }
 
 ?>

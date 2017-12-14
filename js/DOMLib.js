@@ -25,6 +25,8 @@ DOMLib.changeClass = function (elem, oldClass, newClass)
         elem.classList.replace(oldClass, newClass);
     
 }
+DOMLib.getBindShowCaptcha = (elem) => DOMLib.changeClass.bind(DOMLib, elem, "invisible_captcha", "visible_captcha");
+DOMLib.getBindHideCaptcha = (elem) => DOMLib.changeClass.bind(DOMLib, elem, "visible_captcha", "invisible_captcha");
 
 DOMLib.getBindShowError = (elem) => DOMLib.changeClass.bind(DOMLib, elem, "error_message_invisible", "error_message");
 

@@ -23,7 +23,7 @@
           <label>
               <input id="confirm_password_input" type="password" name="confirm_password" placeholder="Confirm Password" required>
           </label>
-          <?php include_once('templates/form_captcha.php'); ?>
+          <?php include_once('templates/smart_form_captcha.php'); ?>
           <p id="captcha_error" class="error_message_invisible"> Please Solve the Captcha. </p>
           <button class="btn submit" id="submit_button_id">Register</button>
       </form>
