@@ -18,15 +18,15 @@ to install a clean project.
 
 to install a clean project with a few test user already inserted in the database.
 
-#### Test users
+### Test users
 
 user test and test3 already share a list with some items
 
-u: test
+u: test  
 p: Test1$00
 
-u: test2
+u: test2  
 p: Test2$00
 
-u: test3
+u: test3  
 p: AasP1)3ase
