@@ -22,9 +22,7 @@
                 </li>
                 <?} else
                 foreach ($listItems as $item) {?>
-                  <li <?if ($item['done'] == 1) {
-                    echo 'style="text-decoration: line-through"';
-                  }$name = str_replace(' ', '_', $item['description']);?>>
+                  <li <?$name = str_replace(' ', '_', $item['description']);?>>
                   <input type="checkbox" name="<?=$name?>" <?= ($item['done'] == 1 ? 'checked' : '');?>disabled>
                   <span class="item default"><?=$item['description']?></span>
                   <input type="hidden" value="<?=$item['description']?>" name="items[]"/>

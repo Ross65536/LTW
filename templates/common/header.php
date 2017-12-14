@@ -24,13 +24,16 @@ $photo = $usersDB->getPhoto($username, "thumbs_tiny");
 
             <?php  if(Session\isLoggedIn()) { ?>
               <div class="dropdown">
-                <div class="container">
+                <div id="large_menu" class="container">
                   <img id="profile_pic" src="<?=$photo?>"/>
                   <div class="middle">
                     <a href="upload_user_photo.php"><div class="text"><span class="default" style="font-size: 15px">Change Photo</span></div></a>
                   </div>
                 </div>
-                <div class="dropdown-content">
+                <div id="small_menu" class="container">
+                  <span class="fa fa-bars fa-2x"></span>
+                </div>
+                <div id="responsive-dropdown" class="dropdown-content">
                   <p><a href="my_lists.php">My Lists</a></p>
                   <p><a href="edit_account.php">Edit Account</a></p>
                   <p><a href="PHP/actions/accounts/action_logout.php">Logout</a></p>
