@@ -10,13 +10,13 @@ Project developed in the LTW class for the MIEIC course at FEUP, Porto by:
 
 copy the source files into a server and then execute in project root:
 
-./install.sh
+* ./install.sh
 
 to install a clean project.
 
-./test_install.sh
+* ./test_install.sh
 
-to install a clean project with a few test user already inserted in the database.
+to install a clean project with a few test users already inserted in the database.
 
 ### Test users
 
