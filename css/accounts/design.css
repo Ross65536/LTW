@@ -32,3 +32,15 @@
 #edit_account h3 {
   font-size: 30px;
 }
+
+
+/*
+* when form submit button disabled
+*/
+.submit:disabled {
+  background-color: rgb(87, 90, 84) !important;
+}
+
+.submit:disabled:hover {
+  background-color: rgba(113, 121, 104, 0.85) !important;
+}
