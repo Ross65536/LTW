@@ -34,4 +34,4 @@ Users "test" and "test3" already share a list with some items.
 --- Libraries Used:
 
 * Google's reCaptcha V2: js and PHP on login, register, edit info pages
-* All pictures and images are from the https://www.pixabay.com website and are free to use under the Creative Commons CC0 policy.
+* All pictures and images used are from the https://www.pixabay.com website and are free to use under the Creative Commons CC0 policy.
