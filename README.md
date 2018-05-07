@@ -8,7 +8,7 @@ Group 19:
 * Rostyslav Khoptiy - 201506219
 * Nuno Manuel Ferreira Corte Real - 201405158
 
-A working example can be found [here](https://web.fe.up.pt/~up201506219/Trabalho/).
+A working example of the website can be found [here](https://web.fe.up.pt/~up201506219/Trabalho/).
 
 ### Install instructions
 
